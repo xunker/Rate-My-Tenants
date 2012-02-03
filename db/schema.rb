@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20120203172116) do
     t.datetime "updated_at"
   end
 
-  add_index "id_card_numbers", ["tenant_id", "state", "type", "number"], :name => "index_id_card_numbers_on_tenant_id_and_state_and_type_and_number", :unique => true
+  add_index "id_card_numbers", ["tenant_id", "state", "type", "number"], :name => "tid_state_type_number", :unique => true
   add_index "id_card_numbers", ["tenant_id"], :name => "index_id_card_numbers_on_tenant_id"
 
   create_table "properties", :force => true do |t|
