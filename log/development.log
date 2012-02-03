@@ -546,3 +546,34 @@ Rendering template within layouts/application
 Rendering home/index
   [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
 Completed in 17ms (View: 15, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2012-02-03 11:16:36) [GET]
+Redirected to http://localhost:3000/
+Completed in 5ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2012-02-03 11:16:36) [GET]
+Rendering template within layouts/application
+Rendering home/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2012-02-03 11:16:39) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 10ms (View: 9, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2012-02-03 11:16:40) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"i8OnGVeyjsvzccl6O8L4ajDKFQ/DBVOWCfAT6haLR+M=", "login"=>"xunker", "password"=>"password"}
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'xunker') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 9ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2012-02-03 11:16:40) [GET]
+Rendering template within layouts/application
+Rendering home/index
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 9ms (View: 8, DB: 0) | 200 OK [http://localhost/]
