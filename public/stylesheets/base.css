@@ -1,0 +1,15 @@
+#header {
+	margin:2px;
+	padding: 2px;
+	border: 1px solid grey;
+}
+
+#content {
+	margin:10px;
+}
+
+#footer {
+	margin: 2px;
+	padding: 2px;
+	border: 1px solid grey;
+}

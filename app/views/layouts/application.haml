@@ -1,0 +1,19 @@
+%html
+	%head
+		<link rel="stylesheet" type="text/css" href="/stylesheets/base.css" />
+		%title
+			- if @page_title.present?
+				= @page_title
+				\- Rate My Tenants
+			- else
+				Rate My Tenants
+	%body
+		#header
+			.header Ugly header - Sign up - Sign in
+
+		#content
+			.content
+				= yield
+
+		#footer
+			.footer Ugly footer - copyright 1964 blah blah blah
