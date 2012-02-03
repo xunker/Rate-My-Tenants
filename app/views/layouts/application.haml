@@ -44,8 +44,8 @@
       %section#login
         .container
           %form{:action => session_path, :method => :post}
-            %input{:name => "login", :onClick => "this.value=''", :type => "text", :value => "email"}/
-            %input{:name => "password", :onClick => "this.value=''", :type => "password", :value => "password"}/
+            %input{:name => "login", :onClick => "this.value=''", :type => "text", :placeholder => "email"}/
+            %input{:name => "password", :onClick => "this.value=''", :type => "password", :placeholder => "password"}/
             %input.btn.primary{:type => "submit", :value => "login"}/
       %header
         #login-bar
@@ -55,6 +55,10 @@
               \   |   
               %a.toggle_login{:href => "#"} Login
     %main
+      - if notice = flash[:notice]
+        #notice= notice
+      - if error = flash[:error]
+        #error= error
       = yield
     %footer
       %p
