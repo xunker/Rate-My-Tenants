@@ -38,14 +38,14 @@
       %section#signup
         .container
           %form
-            %input{:name => "email", :onClick => "this.value=''", :type => "text", :value => "email"}/
-            %input{:name => "password", :onClick => "this.value=''", :type => "text", :value => "password"}/
+            %input{:name => "login", :onClick => "this.value=''", :type => "text", :value => "email"}/
+            %input{:name => "password", :onClick => "this.value=''", :type => "password", :value => "password"}/
             %input.btn.primary{:type => "submit", :value => "sign up"}/
       %section#login
         .container
-          %form
-            %input{:name => "email", :onClick => "this.value=''", :type => "text", :value => "email"}/
-            %input{:name => "password", :onClick => "this.value=''", :type => "text", :value => "password"}/
+          %form{:action => session_path, :method => :post}
+            %input{:name => "login", :onClick => "this.value=''", :type => "text", :value => "email"}/
+            %input{:name => "password", :onClick => "this.value=''", :type => "password", :value => "password"}/
             %input.btn.primary{:type => "submit", :value => "login"}/
       %header
         #login-bar
@@ -54,9 +54,6 @@
               %a.toggle_signup{:href => "#"}> Sign up
               \   |   
               %a.toggle_login{:href => "#"} Login
-        .logo
-          %a{:href => "index.html"}
-            %img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
     %main
       = yield
     %footer
