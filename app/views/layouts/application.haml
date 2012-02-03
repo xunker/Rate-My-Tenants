@@ -19,28 +19,44 @@
               / fonts
               %link{:href => "http://fonts.googleapis.com/css?family=Cardo", :rel => "stylesheet", :type => "text/css"}
   %body
-    %section#signup
-      .container
-        %form
-          %input{:name => "email", :onClick => "this.value=''", :type => "text", :value => "email"}/
-          %input{:name => "password", :onClick => "this.value=''", :type => "text", :value => "password"}/
-          %input.btn.primary{:type => "submit", :value => "sign up"}/
-    %section#login
-      .container
-        %form
-          %input{:name => "email", :onClick => "this.value=''", :type => "text", :value => "email"}/
-          %input{:name => "password", :onClick => "this.value=''", :type => "text", :value => "password"}/
-          %input.btn.primary{:type => "submit", :value => "login"}/
-    %header
-      #login-bar
+    - if logged_in?
+      %header
+        #login-bar
+          .container
+            %p
+              = link_to "Home Page", root_path
+              \-
+              Hello #{current_user.login}! -
+              = link_to "Search for a Tenant", search_tenants_path
+              \-
+              = link_to "Review a Tenant", new_review_path
+              \-
+              =link_to "Your Reviews", reviews_path
+              \-
+              =link_to "Log Out", logout_path
+    - else
+      %section#signup
         .container
-          %p
-            %a.toggle_signup{:href => "#"}> Sign up
-            \   |   
-            %a.toggle_login{:href => "#"} Login
-      .logo
-        %a{:href => "index.html"}
-          %img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
+          %form
+            %input{:name => "email", :onClick => "this.value=''", :type => "text", :value => "email"}/
+            %input{:name => "password", :onClick => "this.value=''", :type => "text", :value => "password"}/
+            %input.btn.primary{:type => "submit", :value => "sign up"}/
+      %section#login
+        .container
+          %form
+            %input{:name => "email", :onClick => "this.value=''", :type => "text", :value => "email"}/
+            %input{:name => "password", :onClick => "this.value=''", :type => "text", :value => "password"}/
+            %input.btn.primary{:type => "submit", :value => "login"}/
+      %header
+        #login-bar
+          .container
+            %p
+              %a.toggle_signup{:href => "#"}> Sign up
+              \   |   
+              %a.toggle_login{:href => "#"} Login
+        .logo
+          %a{:href => "index.html"}
+            %img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
     %main
       = yield
     %footer

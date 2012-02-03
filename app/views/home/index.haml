@@ -1,13 +1,17 @@
+%header
+	.logo
+		%a{:href => "index.html"}
+			%img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
 #home.container
-  %h1
-    See what other landlords said
-    %br>/
-    about your future tenant.
-  .search-bar
-    %form
-      %input.search-field{:name => "search-field", :onClick => "this.value=''", :type => "text", :value => "Your email"}/
-      %input.search-button{:alt => "search", :src => "/images/search-button.png", :type => "image"}/
-  %h2 For example:
-  .example
-    %img{:alt => "Example", :src => "/images/example.png"}/
-  %h2 Enter in tenants:
+	%h1
+		See what other landlords said
+		%br>/
+		about your future tenant.
+	.search-bar
+		%form
+			%input.search-field{:name => "search-field", :onClick => "this.value=''", :type => "text", :value => "Your email"}/
+			%input.search-button{:alt => "search", :src => "/images/search-button.png", :type => "image"}/
+	%h2 For example:
+	.example
+		%img{:alt => "Example", :src => "/images/example.png"}/
+	%h2 Enter in tenants:

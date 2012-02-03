@@ -5,8 +5,10 @@ class CreateRatings < ActiveRecord::Migration
     	t.integer :tenant_id, :null => false
     	t.integer :property_id, :null => false
 
-    	t.date :rental_start # full date here or just month/year? xxx
-    	t.date :rental_end
+    	t.integer :rental_start_month
+        t.integer :rental_start_year
+    	t.integer :rental_end_month
+        t.integer :rental_end_year
 
     	# official questions
     	t.boolean :pay_on_time, :null => false, :default => true
@@ -21,7 +23,7 @@ class CreateRatings < ActiveRecord::Migration
     	t.boolean :deposits_returned, :null => true
     	t.boolean :smoking, :null => true
     	t.boolean :evicted, :null => true
-    	t.boolean :would_rent_again, :null => true # true? false? require this?
+
 
       t.timestamps
     end
