@@ -35,25 +35,37 @@
               \-
               =link_to "Log Out", logout_path
     - else
-      %section#signup
-        .container
-          %form
-            %input{:name => "login", :onClick => "this.value=''", :type => "text", :value => "email"}/
-            %input{:name => "password", :onClick => "this.value=''", :type => "password", :value => "password"}/
-            %input.btn.primary{:type => "submit", :value => "sign up"}/
+      / %section#signup
+      /   .container
+      /     - form_for :user, :id => 'signup-form', :url => users_path do |f|
+      /       %field{:for => "login"} Choose a User Name
+      /       %input{:name => "login", :type => "text", :placeholder => "User Name"}/
+
+      /       %field{:for => "email"} Your Email Address
+      /       %input{:name => "email", :type => "text", :placeholder => "Email Address"}/
+
+      /       %field{:for => "password"} Choose a Password
+      /       %input{:name => "password", :type => "password", :placeholder => "Password"}/
+
+      /       %field{:for => "password_confirmation"} Confirm Password
+      /       %input{:name => "password_confirmation", :type => "password", :placeholder => "Password"}/
+
+      /       %input.btn.primary{:type => "submit", :value => "Sign Up"}/
+
       %section#login
         .container
-          %form{:action => session_path, :method => :post}
+          %form{:action => session_path, :id => 'login-form', :method => :post}
             %input{:name => "login", :onClick => "this.value=''", :type => "text", :placeholder => "email"}/
             %input{:name => "password", :onClick => "this.value=''", :type => "password", :placeholder => "password"}/
-            %input.btn.primary{:type => "submit", :value => "login"}/
+            %input.btn.primary{:type => "submit", :value => "Log In"}/
       %header
         #login-bar
           .container
             %p
-              %a.toggle_signup{:href => "#"}> Sign up
+              / %a.toggle_signup{:href => "#"}> Sign up
+              = link_to "Sign up", new_user_path
               \   |   
-              %a.toggle_login{:href => "#"} Login
+              %a.toggle_login{:href => "#"} Log in
     %main
       - if notice = flash[:notice]
         #notice= notice
