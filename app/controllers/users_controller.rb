@@ -1,13 +1,36 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
-  
+  before_filter :login_required, :except => [ :new, :create ]
+
+  def index
+    @user = current_user
+  end
+
+  def show
+    redirect_to :action => 'index'
+  end
+
+  def update
+    @user = current_user
+    if !params[:current_password].blank?
+      if @user.encrypt(params[:current_password]) != @user.crypted_password
+        @user.errors.add(:password, 'Current password is not correct')
+      end
+    end
+    # require 'ruby-debug'; debugger
+    unless @user.errors.present?
+      @user.update_attributes(params[:user])
+      flash[:notice] = 'Account updated' unless @user.errors.present?
+    end
+
+    render :action => 'index'
+  end
+
 
   # render new.rhtml
   def new
     @user = User.new
   end
- 
+
   def create
     logout_keeping_session!
     @user = User.new(params[:user])

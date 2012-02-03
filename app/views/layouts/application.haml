@@ -34,6 +34,8 @@
               \-
               Messages (3)
               \-
+              = link_to "Account", users_path
+              \-
               =link_to "Log Out", logout_path
     - else
       / %section#signup
@@ -69,9 +71,9 @@
               %a.toggle_login{:href => "#"} Log in
     %main
       - if notice = flash[:notice]
-        #notice= notice
+        .alert-message.success= notice
       - if error = flash[:error]
-        #error= error
+        .alert-message.error= error
       = yield
     %footer
       %p
