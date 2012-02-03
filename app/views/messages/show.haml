@@ -1,0 +1,14 @@
+.message-detail
+	%dl
+		%dt To
+		%dd= @message.to_user.login
+		%dt From
+		%dd= @message.from_user.login
+		%dt Sent
+		%dd= @message.created_at
+		%dt Regarding
+		%dd= @message.review
+		- if @message.reply?
+			%dt In reply to
+			%dd= link_to "Message ##{@message.message.id}", message_path(message.message.id)
+	%p=h @message.body

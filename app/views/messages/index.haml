@@ -1,8 +1,10 @@
+%p Messages sent to you
+
 %table
 	%thead
 		%tr
 			%td
-			%td To
+			%td Sent
 			%td From
 			%td Regarding
 			%td Message
@@ -11,7 +13,7 @@
 			%td
 				- if !message.read?
 					NEW
-			%td= message.to_user.login
+			%td= message.created_at
 			%td= message.from_user.login
 			%td= message.review
-			%td= message.body.slice(0,50)
+			%td= link_to message.body.slice(0,50), message_path(message.id)
