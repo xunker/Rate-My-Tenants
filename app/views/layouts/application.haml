@@ -26,12 +26,13 @@
             %p
               = link_to "Home Page", root_path
               \-
-              Hello #{current_user.login}! -
               = link_to "Search for a Tenant", search_tenants_path
               \-
               = link_to "Review a Tenant", new_review_path
               \-
               =link_to "Your Reviews", reviews_path
+              \-
+              Messages (3)
               \-
               =link_to "Log Out", logout_path
     - else
