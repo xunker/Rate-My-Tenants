@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   has_many :ratings
   has_many :tenants, :through => :ratings
   has_many :properties
+  has_many :sent_messages, :class_name => 'Message', :foreign_key => 'from_user_id'
+  has_many :received_messages, :class_name => 'Message', :foreign_key => 'to_user_id'
 
   ###
 
@@ -53,5 +55,11 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def unread_messages?
+    received_messages.unread.count > 0
+  end
 
+  def unread_message_count
+    received_messages.unread.count
+  end
 end

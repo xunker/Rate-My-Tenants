@@ -32,7 +32,10 @@
               \-
               =link_to "Your Reviews", reviews_path
               \-
-              Messages (3)
+              - if current_user.unread_messages?
+                =link_to "Messages (#{current_user.unread_message_count})", messages_path
+              -else
+                =link_to 'Messages', messages_path
               \-
               = link_to "Account", users_path
               \-

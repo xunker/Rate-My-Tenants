@@ -1,0 +1,17 @@
+%table
+	%thead
+		%tr
+			%td
+			%td To
+			%td From
+			%td Regarding
+			%td Message
+	- current_user.received_messages.each do |message|
+		%tr
+			%td
+				- if !message.read?
+					NEW
+			%td= message.to_user.login
+			%td= message.from_user.login
+			%td= message.review
+			%td= message.body.slice(0,50)

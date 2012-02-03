@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120203172116) do
+ActiveRecord::Schema.define(:version => 20120203215347) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "tenant_id",                                          :null => false
@@ -38,6 +38,20 @@ ActiveRecord::Schema.define(:version => 20120203172116) do
   add_index "id_card_numbers", ["tenant_id", "state", "type", "number"], :name => "tid_state_type_number", :unique => true
   add_index "id_card_numbers", ["tenant_id"], :name => "index_id_card_numbers_on_tenant_id"
 
+  create_table "messages", :force => true do |t|
+    t.integer  "from_user_id", :null => false
+    t.integer  "to_user_id",   :null => false
+    t.integer  "review_id",    :null => false
+    t.integer  "message_id"
+    t.text     "body",         :null => false
+    t.datetime "read_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["from_user_id"], :name => "index_messages_on_from_user_id"
+  add_index "messages", ["to_user_id"], :name => "index_messages_on_to_user_id"
+
   create_table "properties", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.string   "name",       :null => false
@@ -55,8 +69,10 @@ ActiveRecord::Schema.define(:version => 20120203172116) do
     t.integer  "user_id",                               :null => false
     t.integer  "tenant_id",                             :null => false
     t.integer  "property_id",                           :null => false
-    t.date     "rental_start"
-    t.date     "rental_end"
+    t.integer  "rental_start_month"
+    t.integer  "rental_start_year"
+    t.integer  "rental_end_month"
+    t.integer  "rental_end_year"
     t.boolean  "pay_on_time",        :default => true,  :null => false
     t.boolean  "pets",               :default => false, :null => false
     t.boolean  "followed_rules",     :default => true,  :null => false
@@ -67,7 +83,6 @@ ActiveRecord::Schema.define(:version => 20120203172116) do
     t.boolean  "deposits_returned"
     t.boolean  "smoking"
     t.boolean  "evicted"
-    t.boolean  "would_rent_again"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
