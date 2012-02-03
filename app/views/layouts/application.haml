@@ -9,7 +9,23 @@
 				Rate My Tenants
 	%body
 		#header
-			.header Ugly header - Sign up - Sign in
+			.header
+				Ugly header -
+				- if logged_in?
+					Hello #{current_user.login} -
+					= link_to "Search for a tenant", search_tenants_path
+					\-
+					= link_to "Review a Tenant", new_review_path
+					\-
+					= link_to "Your Reviews", reviews_path
+					\-
+					your account
+					\-
+					= link_to 'Sign out', logout_path
+				- else
+					= link_to 'Sign up', signup_path
+					\-
+					= link_to 'Sign in', new_session_path
 
 		#content
 			.content
