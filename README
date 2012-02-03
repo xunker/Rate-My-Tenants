@@ -1,3 +1,8 @@
 == Rate my tenants is AWESOME!
 
 tl;dr
+
+== Requirements
+
+Rails 2.3.11
+Haml 3.1.3
