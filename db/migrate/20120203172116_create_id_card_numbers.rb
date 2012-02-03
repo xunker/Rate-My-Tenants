@@ -9,7 +9,7 @@ class CreateIdCardNumbers < ActiveRecord::Migration
     end
 
     add_index :id_card_numbers, :tenant_id
-    add_index :id_card_numbers, [:tenant_id, :state, :type, :number], :unique => true
+    add_index :id_card_numbers, [:tenant_id, :state, :type, :number], :unique => true, :name => "tid_state_type_number"
 
   end
 

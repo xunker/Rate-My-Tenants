@@ -1,0 +1,19 @@
+%p Messages sent to you
+
+%table
+	%thead
+		%tr
+			%td
+			%td Sent
+			%td From
+			%td Regarding
+			%td Message
+	- current_user.received_messages.each do |message|
+		%tr
+			%td
+				- if !message.read?
+					NEW
+			%td= message.created_at
+			%td= message.from_user.login
+			%td= message.review
+			%td= link_to message.body.slice(0,50), message_path(message.id)

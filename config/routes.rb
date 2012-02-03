@@ -10,9 +10,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tenants, :collection => { :search => [:get, :post] } do |tenants|
     tenants.resource :search
   end
-  # map.connect '/tenants/search', :controller => 'tenants', :action => 'search'
 
   map.resources :reviews
+  map.resources :messages
 
   # The priority is based upon order of creation: first created -> highest priority.
 
