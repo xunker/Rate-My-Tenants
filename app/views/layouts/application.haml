@@ -1,35 +1,89 @@
-%html
-	%head
-		<link rel="stylesheet" type="text/css" href="/stylesheets/base.css" />
-		%title
-			- if @page_title.present?
-				= @page_title
-				\- Rate My Tenants
-			- else
-				Rate My Tenants
-	%body
-		#header
-			.header
-				Ugly header -
-				- if logged_in?
-					Hello #{current_user.login} -
-					= link_to "Search for a tenant", search_tenants_path
-					\-
-					= link_to "Review a Tenant", new_review_path
-					\-
-					= link_to "Your Reviews", reviews_path
-					\-
-					your account
-					\-
-					= link_to 'Sign out', logout_path
-				- else
-					= link_to 'Sign up', signup_path
-					\-
-					= link_to 'Sign in', new_session_path
-
-		#content
-			.content
-				= yield
-
-		#footer
-			.footer Ugly footer - copyright 1964 blah blah blah
+!!!
+%html{:lang => "en"}
+  %head
+    %title Rate My Tenants | Tenant Scores for Landlords
+    %meta{:charset => "utf-8"}
+      %meta{:content => "A Tentant Score for Landlords", :name => "description"}
+        / Le HTML5 shim, for IE6-8 support of HTML elements
+        /[if lt IE 9]
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        / styles
+        %link{:href => "/stylesheets/bootstrap.min.css", :rel => "stylesheet"}
+          %link{:href => "/stylesheets/base.css", :rel => "stylesheet"}
+            / favicon and touch icons
+            %link{:href => "/images/favicon.png", :rel => "shortcut icon"}
+              / javascript
+              / <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+              %script{:src => "/javascripts/jquery-1.4.3.min.js"}
+              %script{:src => "/javascripts/collapse.js"}
+              / fonts
+              %link{:href => "http://fonts.googleapis.com/css?family=Cardo", :rel => "stylesheet", :type => "text/css"}
+  %body
+    %section#signup
+      .container
+        %form
+          %input{:name => "email", :onClick => "this.value=''", :type => "text", :value => "email"}/
+          %input{:name => "password", :onClick => "this.value=''", :type => "text", :value => "password"}/
+          %input.btn.primary{:type => "submit", :value => "sign up"}/
+    %section#login
+      .container
+        %form
+          %input{:name => "email", :onClick => "this.value=''", :type => "text", :value => "email"}/
+          %input{:name => "password", :onClick => "this.value=''", :type => "text", :value => "password"}/
+          %input.btn.primary{:type => "submit", :value => "login"}/
+    %header
+      #login-bar
+        .container
+          %p
+            %a.toggle_signup{:href => "#"}> Sign up
+            \   |   
+            %a.toggle_login{:href => "#"} Login
+      .logo
+        %a{:href => "index.html"}
+          %img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
+    %main#home.container
+      %h1
+        See what other landlords said
+        %br>/
+        about your future tenant.
+      .search-bar
+        %form
+          %input.search-field{:name => "search-field", :onClick => "this.value=''", :type => "text", :value => "Your email"}/
+          %input.search-button{:alt => "search", :src => "/images/search-button.png", :type => "image"}/
+      %h2 For example:
+      .example
+        %img{:alt => "Example", :src => "/images/example.png"}/
+      %h2 Enter in tenants:
+    %footer
+      %p
+        %a{:href => "about.html"}> About
+        \   |   
+        %a{:href => "team.html"}> Meet the Team
+        \   |   
+        %a{:href => "terms.html"} Terms
+        %p
+          %script{:language => "JavaScript"} document.write('© ' + (new Date()).getFullYear());
+          Rate My Tenants
+    / Longer Scripts
+    :javascript
+      $(document).ready(function(){
+      	if(window.location.search.substring(1) == 'add') {
+      		$('#login').show();
+      	} else {
+      		$('#login').hide();
+      	}
+      });
+    :javascript
+      $(document).ready(function(){
+      	if(window.location.search.substring(1) == 'add') {
+      		$('#signup').show();
+      	} else {
+      		$('#signup').hide();
+      	}
+      	});
+    /
+      Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+      chromium.org/developers/how-tos/chrome-frame-getting-started
+    /[if lt IE 7 ]
+      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+      <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>

@@ -1,15 +1,143 @@
-#header {
-	margin:2px;
-	padding: 2px;
-	border: 1px solid grey;
-}
+/* =============================================================================
+   Project: Rate My Tenants
+   URL: RateMyTenants.com
+   Authors: Matt Nielson, Zarin Ficklin
+   ========================================================================== */
 
-#content {
-	margin:10px;
+/* Global */
+   
+body {
+	font-family: georgia, 'PT Sans', helvetica, arial, sans-serif;
+	background: url('../images/bg.png')repeat-x, url('../images/tile.gif') repeat;
+	border-bottom: 5px solid #40afec;
 }
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Cardo', georgia, cambria, serif;
+	font-weight: normal;
+}
+h1 { font-size: 48px; line-height: 54px; }
+h2 { font-size: 40px; line-height: 45px; }
+h3 { font-size: 32px; line-height: 36px; }
+a { color: #40afec; }
+ul { list-style-type: none; margin: 0; }
 
-#footer {
-	margin: 2px;
-	padding: 2px;
-	border: 1px solid grey;
+
+/* Header & Footer */
+
+#login { 
+	width: 100%;
+	height: 60px;
+	background: url('../images/dark-denim.png')repeat #000;
+}
+	#login form {
+		margin-bottom: 0;
+		padding: 20px 0 0 100px;
+	}
+#signup {
+	width: 100%;
+	height: 60px;
+	background: url('../images/dark-denim.png')repeat #000;
+}
+	#signup form {
+		margin-bottom: 0;
+		padding: 20px 0 0 100px;
+	}
+#login-bar {
+	width: 100%;
+	background: url('../images/dark-denim.gif')repeat #000;
+	height: 36px;
+	/*-moz-box-shadow:0px 0px 10px #000000;
+	-webkit-box-shadow:0px 0px 10px #000000;
+	box-shadow:0px 0px 10px #000000;*/
+}
+	#login-bar p {
+		float: right;
+		padding-top: 9px;
+		color: #fff;
+	}
+	#login-bar a {
+		color: #fff;
+	}
+footer, .container {
+	width: 710px;
+	margin: 0 auto;
+	display: block;
+}
+.logo {
+	width: 200px;
+	height: 97px;
+	margin: 0 auto;
+	padding: 40px 0 30px 0;
+}
+footer {
+	border: 0;
+	padding-bottom: 20px;
+}
+	footer p {
+		text-align: center;
+		text-shadow: 1px 1px 0px #fff;
+		filter: dropshadow(color=#fff, offx=1, offy=1);
+	}
+
+
+/* Search Bar */
+
+.search-bar {
+	width: 694px;
+	height: 78px;
+	padding: 8px;
+	border: 1px solid #fff;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	background: url('../images/black.png') repeat;
+}
+.search-bar form {
+	margin: 0;
+	padding: 0;
+}
+	.search-field, .search-button {
+		float: left;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		border-radius: 8px;
+	}
+	.search-field {
+		width: 440px;
+		height: 69px;
+		margin-right: 8px;
+		padding-left: 20px;
+		background: #373737;
+		font-size: 36px;
+		line-height: 36px;
+		font-family: 'Cardo', georgia, cambria, serif;;
+		color: white;
+	}
+	.search-button {
+		width: 218px;
+		height: auto;
+		box-shadow: 0;
+		padding: 0;
+		border: 0;
+	}
+
+
+/* Home Page */
+
+#home h1 {
+	text-align: center;
+	margin: 20px 0 50px 0;
+	text-shadow: 1px 1px 0px #fff;
+	filter: dropshadow(color=#fff, offx=1, offy=1);
+}
+#home h2 {
+	text-align: center;
+	margin: 40px 0;
+	text-shadow: 1px 1px 0px #fff;
+	filter: dropshadow(color=#fff, offx=1, offy=1);
+}
+.example {
+	width: 710px;
+	height: 351px;
+	margin-bottom: 30px;
 }
