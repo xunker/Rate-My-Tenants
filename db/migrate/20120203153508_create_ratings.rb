@@ -10,7 +10,6 @@ class CreateRatings < ActiveRecord::Migration
     	t.integer :rental_end_month
       t.integer :rental_end_year
 
-      t.integer :rent_amount
       t.string :times_late_paying, :null => false
       t.string :noise_complaints, :null => false
       t.string :damage, :null => false
