@@ -3,8 +3,9 @@
   %a{:href => root_path}
     %img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
 %main#home.container
+  %img{:alt => "See what landlords said about your future tenants", :src => "images/tagline.png"}/
 
-  .search-bar{:style => "margin-top:170px"}
+  .search-bar
     - form_tag search_reviews_path, :method => :post do
       = text_field_tag :q, '', { :class => "search-field", :placeholder => "Tenant name..."}
       = image_submit_tag("search-button.png", :class => "search-button")
