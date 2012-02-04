@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+
   ### rate_my_tenants
 
   has_many :ratings
