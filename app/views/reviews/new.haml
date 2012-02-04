@@ -8,14 +8,17 @@
       %input.entry-last-name{:name => "entry-last-name", :onClick => "this.value=''", :type => "text", :value => "Last name"}/
       .questions
         %ul{:style => "padding-top:5px"}
-          %li Did they pay rent on time? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-          %li Did they violate lease provisions/house rules? . . . . . . . . . . . . . . . . . . . . .
-          %li Did they owe you any money when they left? . . . . . . . . . . . . . . . . . . . . . .
-          %li Did they leave on time? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-          %li Did they have pets? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-          %li Did they smoke? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+          - ["How many times where they late paying the rent, if any?", "How many noise complaints did they receive, if any?", "Did they cause damange to the property?", "Did they skip or were they evicted?", "Did they leave owing any money?"].each do |question|
+            %li{:class => cycle('even', 'odd')}= question
+
       .add-entry
         %ul{:style => "padding-top:5px"}
+          %li
+            .controls
+              %input{:type => 'text', :style => 'width:50px'}
+          %li
+            .controls
+              %input{:type => 'text', :style => 'width:50px'}
           %li
             .controls
               %select#select01
