@@ -10,7 +10,7 @@
       .clearfix
         = f.label :login, 'User Name'
         .input
-          .span.uneditable-text= f.object.login
+          = f.object.login
       .clearfix
         = f.label :email, 'Your Email Address'
         .input
@@ -60,6 +60,7 @@
         %a.btn{:href => new_review_path} Add another tenant
         %br/
         %br/
+
       .page-header
       %h4
         %a{:name => "properties"} Your Properties
