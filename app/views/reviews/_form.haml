@@ -22,9 +22,12 @@
     = ff.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name"}
 
     .address
-      = f.text_field :name, { :id => 'property-name', :class => 'name-field', :placeholder => "Apartment name or address"}
-      = f.text_field :zip, { :id => 'property-zip', :class => 'zip-field', :placeholder => "Zipcode", :onkeyup => "get_city_state_from_zip_field();"}
-      #city-name{:style => "float:right;margin-right:25px;"}
+      - if f.object.new_record?
+        = f.text_field :name, { :id => 'property-name', :class => 'name-field', :placeholder => "Apartment name or address"}
+        = f.text_field :zip, { :id => 'property-zip', :class => 'zip-field', :placeholder => "Zipcode", :onkeyup => "get_city_state_from_zip_field();"}
+        #city-name{:style => "float:right;margin-right:25px;"}
+      - else
+        .name-field= [f.object.name, f.object.zip, f.object.city, f.object.state].join(', ')
     .questions
       %ul{:style => "padding-top:5px"}
         - ["Were they late paying the rent?", "Did they recieve any noise complaints?", "Did they cause damange to the property?", "Did they skip or were they evicted?", "Did they leave owing any money?"].each do |question|
