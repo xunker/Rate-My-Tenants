@@ -1,17 +1,16 @@
-%header
-	.logo
-		%a{:href => "index.html"}
-			%img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
-#home.container
-	%h1
-		See what other landlords said
-		%br>/
-		about your future tenant.
-	.search-bar
-		%form
-			%input.search-field{:name => "search-field", :onClick => "this.value=''", :type => "text", :value => "Your email"}/
-			%input.search-button{:alt => "search", :src => "/images/search-button.png", :type => "image"}/
-	%h2 For example:
-	.example
-		%img{:alt => "Example", :src => "/images/example.png"}/
-	%h2 Enter in tenants:
+.logo
+  %a{:href => root_path}
+    %img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
+%main#home.container
+  %h1
+    See what other landlords said
+    %br>/
+    about your future tenant:
+  .search-bar
+    %form
+      %input.search-field{:name => "search-field", :onClick => "this.value=''", :type => "text", :value => "Tenant name/phone..."}/
+      %input.search-button{:alt => "search", :src => "images/search-button.png", :type => "image"}/
+  %p.safe (We follow all UEA guidelines and are 100% safe to use)
+  %h2 For example:
+  .example
+    %img{:alt => "Example", :src => "images/example.png"}/

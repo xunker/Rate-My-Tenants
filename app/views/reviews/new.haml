@@ -1,1 +1,71 @@
-this is a new review
+.logo
+  %a{:href => root_path}
+    %img{:alt => "Rate My Tenants", :src => "/images/logo.png"}/
+%main#home.container
+  .result{:style => "margin-bottom:10px"}
+    %form
+      %input.entry-first-name{:name => "entry-first-name", :onClick => "this.value=''", :type => "text", :value => "First name"}/
+      %input.entry-last-name{:name => "entry-last-name", :onClick => "this.value=''", :type => "text", :value => "Last name"}/
+      .questions
+        %ul{:style => "padding-top:5px"}
+          %li Did they pay rent on time? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+          %li Did they violate lease provisions/house rules? . . . . . . . . . . . . . . . . . . . . .
+          %li Did they owe you any money when they left? . . . . . . . . . . . . . . . . . . . . . .
+          %li Did they leave on time? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+          %li Did they have pets? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+          %li Did they smoke? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      .add-entry
+        %ul{:style => "padding-top:5px"}
+          %li
+            .controls
+              %select#select01
+                %option --
+                %option yes
+                %option sometimes
+                %option no
+          %li
+            .controls
+              %select#select01
+                %option --
+                %option yes
+                %option sometimes
+                %option no
+          %li
+            .controls
+              %select#select01
+                %option --
+                %option yes
+                %option sometimes
+                %option no
+          %li
+            .controls
+              %select#select01
+                %option --
+                %option yes
+                %option sometimes
+                %option no
+          %li
+            .controls
+              %select#select01
+                %option --
+                %option yes
+                %option sometimes
+                %option no
+          %li
+            .controls
+              %select#select01
+                %option --
+                %option yes
+                %option sometimes
+                %option no
+  .add-entry-address
+    .clearfix
+      %label{:for => "subject"} Apartment Name / Street Address
+      .input
+        %input{:name => "add-entry-apartment", :size => "30", :type => "text"}/
+    .clearfix
+      %label{:for => "subject"} City
+      .input
+        %input{:name => "add-entry-city", :size => "30", :type => "text"}/
+  .add-entry-submit
+    %input.btn.large.primary{:type => "submit", :value => "add entry"}/

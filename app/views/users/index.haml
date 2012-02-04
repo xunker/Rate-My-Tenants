@@ -1,46 +1,78 @@
+.logo
+  %a{:href => root_path}
+    %img{:alt => "Rate My Tenants", :src => "/images/logo.png"}/
 - form_for @user do |f|
   - if f.object.errors.present?
     .alert-message.error= f.object.errors.full_messages.to_sentence
-
-  .fieldset
-    .clearfix
-      = f.label :login, 'User Name'
-      .input
-        = current_user.login
-    .clearfix
-      = f.label :first_name
-      .input
-        = f.text_field :first_name
-    .clearfix
-      = f.label :last_name
-      .input
-        = f.text_field :last_name
-    .clearfix
-      = f.label :email, 'Your Email Address'
-      .input
-        = f.text_field :email
-    //.page-header
-    //%h4 Time Zone
-    //.clearfix
-    //  %label Time Zone
-    //  .input
-    //    = f.select :time_zone, -12..14
-
-    .page-header
-    %h4 Password Change
-    .clearfix
-      %label Current Password
-      .input
-        = password_field_tag 'current_password', nil, :autocomplete => "off"
-    .clearfix
-      = f.label :password, 'New Password'
-      .input
-        = f.password_field :password, :autocomplete => "off"
-    .clearfix
-      = f.label :password_confirmation, 'Confirm Password'
-      .input
-        = f.password_field :password_confirmation, :autocomplete => "off"
-
-    .clearfix
-      .input
-        = f.submit 'Save'
+  .container#account-info
+    .fieldset
+      %h4 Basic Info
+      .clearfix
+        = f.label :login, 'User Name'
+        .input
+          .span.uneditable-text= f.object.login
+      .clearfix
+        = f.label :email, 'Your Email Address'
+        .input
+          = f.text_field :email
+      .page-header
+      %h4 Password Change
+      .clearfix
+        %label Current Password
+        .input
+          = password_field_tag 'current_password', nil, :autocomplete => "off"
+      .clearfix
+        = f.label :password, 'New Password'
+        .input
+          = f.password_field :password, :autocomplete => "off"
+      .clearfix
+        = f.label :password_confirmation, 'Confirm Password'
+        .input
+          = f.password_field :password_confirmation, :autocomplete => "off"
+      .clearfix
+        = f.label :first_name
+        .input
+          = f.text_field :first_name
+      .clearfix
+        = f.label :last_name
+        .input
+          = f.text_field :last_name
+      .clearfix.actions
+        %input.btn.primary.large{:type => "submit", :value => "Save"}/
+      
+      .page-header
+      %h4 Your Ratings
+      .your-ratings
+        %ul
+          %li
+            %a{:href => "#"} John Doe
+            \-
+            %a{:href => "#"} Edit
+            \-
+            %a{:href => "#"} Delete
+          %li
+            %a{:href => "#"} John Doe
+            \-
+            %a{:href => "#"} Edit
+            \-
+            %a{:href => "#"} Delete
+          %li
+            %a{:href => "#"} John Doe
+            \-
+            %a{:href => "#"} Edit
+            \-
+            %a{:href => "#"} Delete
+          %li
+            %a{:href => "#"} John Doe
+            \-
+            %a{:href => "#"} Edit
+            \-
+            %a{:href => "#"} Delete
+          %li
+            %a{:href => "#"} John Doe
+            \-
+            %a{:href => "#"} Edit
+            \-
+            %a{:href => "#"} Delete
+        %br/
+        %a.btn{:href => "#"} Add another tenant
