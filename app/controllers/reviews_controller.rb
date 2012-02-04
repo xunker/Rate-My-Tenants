@@ -1,6 +1,10 @@
 class ReviewsController < ApplicationController
 	before_filter :login_required
 
+  def index
+    redirect_to users_path + "#reviews"
+  end
+
   def new
     @property = Property.new
     @property.ratings = [@property.ratings.build(:skipped_or_evicted => "")] # override boolean default
@@ -25,6 +29,24 @@ class ReviewsController < ApplicationController
 	 	redirect_to users_path + '#ratings'
 	 end
 	end
+
+  def search
+    if params["q"].present?
+      names = params['q'].split(' ')
+      conditions = []
+      if names.size == 1
+        conditions = ["last_name = ?", names.first]
+      else
+        conditions = ["first_name = ? AND last_name = ?", names.first, names[1]]
+      end
+
+      @results = Rating.find(
+        :all,
+        :conditions => conditions,
+        :limit => 10
+      )
+    end
+  end
 
 	# ajax
 	def zip_to_city

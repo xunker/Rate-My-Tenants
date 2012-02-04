@@ -1,0 +1,44 @@
+.result{:style => "margin-bottom:10px"}
+  = rating.first_name
+  = rating.last_name
+
+  .questions
+    %ul{:style => "padding-top:5px"}
+      - ["Were they late paying the rent?", "Did they recieve any noise complaints?", "Did they cause damange to the property?", "Did they skip or were they evicted?", "Did they leave owing any money?"].each do |question|
+        %li{:class => cycle('even', 'odd')}= question
+
+  .add-entry
+    %ul{:style => "padding-top:5px"}
+      %li
+        .controls
+          = rating.times_late_paying
+
+      %li
+        .controls
+          = rating.noise_complaints
+
+      %li
+        .controls
+          = rating.damage
+
+      %li
+        .controls
+          = rating.skipped_or_evicted
+
+      %li
+        .controls
+          = rating.left_owing_money
+
+
+
+
+.add-entry-address
+  .clearfix
+    %label Apartment Name / Street Address
+    .input
+      = rating.property.name
+  .clearfix
+    %label Location
+    .input
+      = [rating.property.city, rating.property.state, rating.property.zip].join(', ')
+      %br

@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
-  map.resources :reviews, :collection => { :zip_to_city => :get }
+  map.resources :reviews, :collection => { :search => [:get, :post], :zip_to_city => :get }
   map.resources :messages
 
   # The priority is based upon order of creation: first created -> highest priority.

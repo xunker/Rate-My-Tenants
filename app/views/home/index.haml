@@ -7,9 +7,9 @@
     %br>/
     about your future tenant:
   .search-bar
-    %form
-      %input.search-field{:name => "search-field", :onClick => "this.value=''", :type => "text", :value => "Tenant name..."}/
-      %input.search-button{:alt => "search", :src => "images/search-button.png", :type => "image"}/
+    - form_tag search_reviews_path, :method => :post do
+      = text_field_tag :q, '', { :class => "search-field", :placeholder => "Tenant name..."}
+      = image_submit_tag("search-button.png", :class => "search-button")
   .safe
     %img{:alt => "Seal", :src => "/images/seal.png"}/
     %p (We respect Federal Fair Housing guidelines and are 100% safe to use)

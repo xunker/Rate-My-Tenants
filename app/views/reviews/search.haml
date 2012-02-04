@@ -1,0 +1,13 @@
+%main#home.container
+  %br
+  .search-bar
+    - form_tag search_reviews_path, :method => :post do
+      = text_field_tag :q, params['q'], { :class => "search-field" }
+      = image_submit_tag("search-button.png", :class => "search-button")
+  - if params['q'].present?
+    .page-header{:style => "margin-top:25px;"}
+    -if @results.empty?
+      %em We're sorry, your search for "#{params['q']}" had no results
+    -else
+      - @results.each do |result|
+        = render :partial => 'result_public', :locals => { :rating => result }
