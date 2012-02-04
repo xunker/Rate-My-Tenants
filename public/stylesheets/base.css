@@ -99,11 +99,17 @@ footer {
 	-moz-border-radius: 12px;
 	border-radius: 12px;
 	background: url('../images/black.png') repeat;
+	box-shadow:inset 0px 0px 85px rgba(0,0,0,.5);
+	-webkit-box-shadow:inset 0px 0px 85px rgba(0,0,0,.5);
+	-moz-box-shadow:inset 0px 0px 85px rgba(0,0,0,.5);
 }
 .search-bar form {
 	margin: 0;
 	padding: 0;
 }
+	.search-bar.home {
+		margin-top: 170px;
+	}
 	.search-field, .search-button {
 		float: left;
 		-webkit-border-radius: 8px;
@@ -132,6 +138,9 @@ footer {
 
 /* Home Page */
 
+.home-page {
+	background: url('../images/bg-home.png')repeat-x, url('../images/tile.gif') repeat;
+}
 #home h1 {
 	text-align: center;
 	margin: 20px 0 50px 0;

@@ -1,12 +1,9 @@
+%body.home-page/
 .logo
   %a{:href => root_path}
     %img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
 %main#home.container
-  %h1
-    See what other landlords said
-    %br>/
-    about your future tenant:
-  .search-bar
+  .search-bar.home
     %form
       %input.search-field{:name => "search-field", :onClick => "this.value=''", :type => "text", :value => "Tenant name..."}/
       %input.search-button{:alt => "search", :src => "images/search-button.png", :type => "image"}/
