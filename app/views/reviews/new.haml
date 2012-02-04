@@ -49,6 +49,6 @@
           = f.text_field :zip, { :size => "30", :onkeyup => "var zip = $(this).val(); if (zip.length == 5) { $('#city-name').load('/reviews/zip_to_city?zip=' + zip); } else { $('#city-name').text('unknown ZIP') }" }
           %br
           #city-name{:style => "height: 25px; padding:5px; float:right;"}
-      %input{:checked => "", :type => "checkbox"}
-        I agree with the <a href="/terms">terms and conditons</a> and understand that all data I entered is my opinion
+      = check_box_tag :accepted_terms, true, true
+      I agree with the <a href="/terms">terms and conditons</a> and understand that all data I entered is my opinion
       %input.btn.large.primary{:type => "submit", :value => "add entry"}/

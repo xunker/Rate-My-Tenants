@@ -17,6 +17,8 @@ class CreateRatings < ActiveRecord::Migration
       t.boolean :skipped_or_evicted, :null => false, :default => false
       t.string :left_owing_money, :null => false
 
+      t.boolean :accepted_terms, :default => true
+
       t.timestamps
     end
   end

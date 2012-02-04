@@ -15,6 +15,8 @@ class Rating < ActiveRecord::Base
   validates_presence_of :first_name
   validates_presence_of :last_name
 
+  validates_presence_of :accepted_terms
+
   named_scope :newest_first, :order => "id DESC"
 
   def name
