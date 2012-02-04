@@ -136,6 +136,10 @@ footer {
 	text-shadow: 1px 1px 0px #fff;
 	filter: dropshadow(color=#fff, offx=1, offy=1);
 }
+.safe {
+	text-align: center;
+	padding-top: 8px;
+}
 .example {
 	width: 710px;
 	height: 351px;
@@ -251,3 +255,20 @@ footer {
 		.challenge a {
 			color: #dda539;
 		}
+
+
+/* Search Results */
+
+.search-results {
+	
+}
+	.search-result ul li {
+		padding: 10px 0;
+	}
+	.location {
+		font-style: italic;
+		color: #ccc;
+	}
+	.underline {
+		border-bottom: 1px solid #ccc;
+	}
