@@ -1,10 +1,12 @@
 .logo
   %a{:href => root_path}
     %img{:alt => "Rate My Tenants", :src => "/images/logo.png"}/
+- if @property.errors.present?
+  .alert-message.error= @property.errors.full_messages.to_sentence
 %main#home.container
-  - form_for :property, Property.new, :url => reviews_path do |f|
+  - form_for :property, @property, :url => reviews_path do |f|
     .result{:style => "margin-bottom:10px"}
-      - f.fields_for :ratings, f.object.ratings.build do |ff|
+      - f.fields_for :ratings do |ff|
         = ff.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name"}
         = ff.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name"}
 

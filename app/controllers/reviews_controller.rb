@@ -1,14 +1,20 @@
 class ReviewsController < ApplicationController
 	before_filter :login_required
 
-  # def new
-  #   @rating = Rating.new
-  # end
+  def new
+    @property = Property.new
+    @property.ratings = [@property.ratings.build(:skipped_or_evicted => "")]
+  end
+
+  def show
+  	@property = Property.find_by_id_and_user_id(params[:id], current_user.id)
+  end
 
 	def create
    @property = Property.create(params['property'].merge(:user_id => current_user.id))
    if @property.errors.present?
-	   render :text => @property.errors.full_messages.to_sentence
+		 render :action => "new"
+	   # render :text => @property.errors.full_messages.to_sentence
 	 else
 	 	redirect_to users_path + '#ratings'
 	 end
