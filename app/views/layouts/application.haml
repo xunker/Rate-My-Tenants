@@ -56,7 +56,7 @@
       %section#login
         .container
           %form{:action => session_path, :id => 'login-form', :method => :post}
-            %input{:name => "login", :onClick => "this.value=''", :type => "text", :placeholder => "email"}/
+            %input{:name => "login", :onClick => "this.value=''", :type => "text", :placeholder => "username"}/
             %input{:name => "password", :onClick => "this.value=''", :type => "password", :placeholder => "password"}/
             %input.btn.primary{:type => "submit", :value => "Log In"}/
       %header

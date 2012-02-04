@@ -1,9 +1,14 @@
 .result{:style => "margin-bottom:10px"}
-  = rating.first_name
-  = rating.last_name
 
-  .address
-    = [rating.property.name, rating.property.city, rating.property.state, rating.property.zip].compact.join(', ')
+  .results-header
+    .row1
+      = rating.first_name
+      = rating.last_name
+    .row2
+      .result-property-name= rating.property.name
+      .result-city= rating.property.city
+      .result-state= rating.property.state
+      .result-zip= rating.property.zip
 
   .questions
     %ul{:style => "padding-top:2px"}
