@@ -1,3 +1,13 @@
+:javascript
+  function populate_property_form(name, zip) {
+    $('#property-name').val(name);
+    $('#property-zip').val(zip);
+    get_city_state_from_zip_field();
+  }
+
+  function get_city_state_from_zip_field() {
+    var zip = $('#property-zip').val(); if (zip.length == 5) { $('#city-name').load('/reviews/zip_to_city?zip=' + zip); } else { $('#city-name').text('unknown ZIP'); return false; }
+  }
 .result{:style => "margin-bottom:10px"}
   - f.fields_for :ratings do |ff|
     - if params['review_id'].present?
@@ -37,14 +47,28 @@
 
 .add-entry-address
   - if f.object.new_record?
+    .existing-properties{:style => "float:right;"}
+      %p
+        %strong Your Properties
+      %ul
+        - if current_user.properties.empty?
+          %li
+            %em
+              You haven't added any propeties yet.
+              %br
+              Please use the form to the right.
+        - else
+          - current_user.properties.each do |property|
+            %li= link_to_function(property.name, "populate_property_form('" + property.name + "', '" + property.zip + "');");
+
     .clearfix
       %label{:for => "name"} Apartment Name / Street Address
       .input
-        = f.text_field :name, { :size => 30 }
+        = f.text_field :name, { :id => "property-name", :size => 30 }
     .clearfix
       %label{:for => "code"} ZIP Code of property
       .input
-        = f.text_field :zip, { :size => "30", :onkeyup => "var zip = $(this).val(); if (zip.length == 5) { $('#city-name').load('/reviews/zip_to_city?zip=' + zip); } else { $('#city-name').text('unknown ZIP') }" }
+        = f.text_field :zip, { :size => "30", :id => "property-zip", :onkeyup => "get_city_state_from_zip_field();" }
         %br
         #city-name{:style => "height: 25px; padding:5px; float:right;"}
     = check_box_tag :accepted_terms, true, true
