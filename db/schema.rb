@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120204000038) do
+ActiveRecord::Schema.define(:version => 20120203215347) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "tenant_id",                                          :null => false
@@ -66,19 +66,27 @@ ActiveRecord::Schema.define(:version => 20120204000038) do
   add_index "properties", ["user_id"], :name => "index_properties_on_user_id"
 
   create_table "ratings", :force => true do |t|
-    t.integer  "user_id",            :null => false
-    t.integer  "tenant_id",          :null => false
-    t.integer  "property_id",        :null => false
+    t.integer  "user_id",                               :null => false
+    t.integer  "tenant_id",                             :null => false
+    t.integer  "property_id",                           :null => false
     t.integer  "rental_start_month"
     t.integer  "rental_start_year"
     t.integer  "rental_end_month"
     t.integer  "rental_end_year"
-    t.string   "pay_on_time"
-    t.string   "follow_rules"
-    t.string   "owe_money"
-    t.string   "leave_on_time"
-    t.string   "pets"
-    t.string   "smoke"
+    t.integer  "rent_amount"
+    t.integer  "times_late_paying",  :default => 0,     :null => false
+    t.integer  "noise_complaints",   :default => 0,     :null => false
+    t.boolean  "notice_gave",        :default => true,  :null => false
+    t.boolean  "left_on_time",       :default => true,  :null => false
+    t.boolean  "lease_fulfilled",    :default => true,  :null => false
+    t.boolean  "pets",               :default => false, :null => false
+    t.boolean  "pet_damage",         :default => false, :null => false
+    t.boolean  "evicted",            :default => false, :null => false
+    t.boolean  "skipped",            :default => false, :null => false
+    t.boolean  "would_rent_again",   :default => true,  :null => false
+    t.integer  "amount_owing",       :default => 0
+    t.string   "reason_for_owing"
+    t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -112,8 +120,8 @@ ActiveRecord::Schema.define(:version => 20120204000038) do
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
     t.boolean  "admin",                                    :default => false
-    t.string   "first_name",                               :default => "unknown"
-    t.string   "last_name",                                :default => "unknown"
+    t.string   "first_name",                                                  :null => false
+    t.string   "last_name",                                                   :null => false
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
