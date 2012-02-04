@@ -10,7 +10,7 @@
       .clearfix
         = f.label :login, 'User Name'
         .input
-          .span.uneditable-text= f.object.login
+          = f.object.login
       .clearfix
         = f.label :email, 'Your Email Address'
         .input
@@ -75,7 +75,8 @@
             \-
             %a{:href => "#"} Delete
         %br/
-        %a.btn{:href => "#"} Add another tenant
+      .clearfix.actions
+        %input.btn.primary.large{:type => "submit", :value => "Add Another Tenant"}/
 
       .page-header
       %h4 Your Properties
