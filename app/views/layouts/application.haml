@@ -23,21 +23,14 @@
       %header
         #login-bar
           .container
-            %p
-              = link_to "Home Page", root_path
-              \-
-              = link_to "Search for a Tenant", search_tenants_path
-              \-
-              = link_to "Review a Tenant", new_review_path
-              \-
-              =link_to "Your Reviews", reviews_path
-              \-
-              - if current_user.unread_messages?
-                =link_to "Messages (#{current_user.unread_message_count})", messages_path
-              -else
-                =link_to 'Messages', messages_path
-              \-
-              = link_to "Account", users_path
+            %p.pull-left
+              %a{:href => new_review_path}
+                = image_tag("/images/plus.png")
+                Add a Tenant
+            %p.pull-right
+              %a{:href => users_path}
+                = image_tag("/images/gear.png")
+                Account
               \-
               =link_to "Log Out", logout_path
     - else

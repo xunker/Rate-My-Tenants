@@ -9,7 +9,7 @@
 body {
 	font-family: georgia, 'PT Sans', helvetica, arial, sans-serif;
 	background: url('../images/bg.png')repeat-x, url('../images/tile.gif') repeat;
-	border-bottom: 5px solid #40afec;
+	height: 100%;
 }
 h1,h2,h3,h4,h5,h6 {
 	font-family: 'Cardo', georgia, cambria, serif;
@@ -18,6 +18,7 @@ h1,h2,h3,h4,h5,h6 {
 h1 { font-size: 48px; line-height: 54px; }
 h2 { font-size: 40px; line-height: 45px; }
 h3 { font-size: 32px; line-height: 36px; }
+h4 { font-size: 24px; line-height: 30px; margin-bottom: 8px; }
 a { color: #40afec; }
 ul { list-style-type: none; margin: 0; }
 
@@ -51,7 +52,6 @@ ul { list-style-type: none; margin: 0; }
 	box-shadow:0px 0px 10px #000000;*/
 }
 	#login-bar p {
-		float: right;
 		padding-top: 9px;
 		color: #fff;
 	}
@@ -141,3 +141,113 @@ footer {
 	height: 351px;
 	margin-bottom: 30px;
 }
+
+
+/* Account Info */
+
+#account-info {
+	margin-top: 50px;
+}
+	#account-info .fieldset {
+		margin-left: 100px;
+	}
+	#account-info h4 {
+		margin: 0 0 12px 150px;
+	}
+.your-ratings {
+	margin-left: 150px;
+}
+
+
+/* Result */
+
+.result {
+	width: 710px;
+	height: 351px;
+	margin: 30px 0;
+	position: relative;
+	background: url('../images/scorecard-blank.png');
+}
+	.result.teaser {
+		background: url('../images/scorecard.png');
+	}
+	.result h3 {
+		padding: 65px 0 0 60px;
+	}
+	.questions {
+		float: left;
+		width: 600px;
+		/*outline: 1px solid gold;*/
+	}
+		.questions ul {
+			padding: 25px 0 0 60px;
+		}
+		.questions ul li, .answers ul li {
+			font-size: 17px;
+			line-height: 30px;
+		}
+	.answers, .add-entry {
+		float: right;
+		width: 95px;
+		/*outline: 1px solid gold;*/	
+	}
+		.add-entry {
+			width: 105px;
+		}
+		.answers ul, .add-entry ul {
+			padding: 25px 0 0 0;
+		}
+		.green {
+			color: #39b54a;
+		}
+		.red {
+			color: #cc0011;
+		}
+	.see-more {
+		width: 100px;
+		height: 50px;
+		top: 65px;
+		right: 140px;
+		position: absolute;
+	}
+	.entry-first-name {
+		margin: 65px 0 0 60px;
+		width: 190px;
+		height: 40px;
+		font-size: 32px;
+		line-height: 32px;
+		font-family: 'Cardo', georgia, cambria, serif;
+	}
+	.entry-last-name {
+		margin: 65px 0 0 5px;
+		width: 190px;
+		height: 40px;
+		font-size: 32px;
+		line-height: 32px;
+		font-family: 'Cardo', georgia, cambria, serif;
+	}
+	.add-entry select {
+		width: 60px;
+		margin-bottom: 3px;
+	}
+		.add-entry-address {
+			width: 450px;
+			float: left;
+		}
+		.add-entry-address .clearfix {
+			height: 34px;
+		}
+		.add-entry-address label {
+			width: 220px;
+			margin-right: 7px;
+		}
+		.add-entry-submit {
+			float: right;
+			margin: 26px 20px 0 0;
+		}
+		.challenge {
+			text-align: center;
+		}
+		.challenge a {
+			color: #dda539;
+		}
