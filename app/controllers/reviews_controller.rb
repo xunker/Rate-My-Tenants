@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-	before_filter :login_required
+	before_filter :login_required, :except => [:search]
 
   def index
     redirect_to users_path + "#reviews"

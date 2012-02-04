@@ -10,4 +10,7 @@
       %em We're sorry, your search for "#{params['q']}" had no results
     -else
       - @results.each do |result|
-        = render :partial => 'result_public', :locals => { :rating => result }
+        - if logged_in?
+          = render :partial => 'result_private', :locals => { :rating => result }
+        - else
+          = render :partial => 'result_public', :locals => { :rating => result }
