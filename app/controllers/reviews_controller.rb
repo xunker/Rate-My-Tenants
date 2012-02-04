@@ -35,6 +35,17 @@ class ReviewsController < ApplicationController
 	 end
 	end
 
+  def destroy
+    @rating = Rating.find(params[:id])
+    unless @rating.property.user_id == current_user.id
+      flash[:error] = "not yours to delete!"
+      redirect_to users_path + '#ratings'
+    end
+    flash[:notice] = "review deleted"
+    @rating.destroy
+    redirect_to users_path + '#ratings'
+  end
+
   def search
     if params["q"].present?
       names = params['q'].split(' ')
