@@ -51,7 +51,7 @@
               %li
                 = link_to rating.name, "/reviews/#{rating.property.id}?review_id=#{rating.id}"
                 \-
-                %a{:href => "#"} Delete
+                %a{:href => "javascript:alert('Uh no.');"} Delete
           - else
             %li
               %em You haven't rated any tenants yet
@@ -73,7 +73,7 @@
                 \-
                 %a{:href => "#"} Edit
                 \-
-                %a{:href => "#"} Delete
+                = link_to "Delete", property_path(property), :method => :delete
           - else
             %li
               %em You haven't added any properties yet

@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   ### rate_my_tenants
 
   has_many :ratings, :through => :properties
-  has_many :properties
+  has_many :properties, :dependent => :destroy
   has_many :sent_messages, :class_name => 'Message', :foreign_key => 'from_user_id'
   has_many :received_messages, :class_name => 'Message', :foreign_key => 'to_user_id'
 
