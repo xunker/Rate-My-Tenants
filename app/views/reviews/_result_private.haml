@@ -28,7 +28,10 @@
           = rating.damage
       %li
         .controls
-          = rating.skipped_or_evicted
+          - if rating.skipped_or_evicted
+            Yes
+          - else
+            No
       %li
         .controls
           = rating.left_owing_money
