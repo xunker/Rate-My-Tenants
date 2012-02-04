@@ -3,7 +3,7 @@ class CreateProperties < ActiveRecord::Migration
     create_table :properties do |t|
     	t.integer :user_id, :null => false
     	t.string :name, :null => false
-    	t.string :code
+    	t.string :code # so this is, like, zip code now.  Blarg, Im tired.
     	t.string :address
       t.timestamps
     end

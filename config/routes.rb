@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
     tenants.resource :search
   end
 
-  map.resources :reviews
+  map.resources :reviews, :collection => { :zip_to_city => :get }
   map.resources :messages
 
   # The priority is based upon order of creation: first created -> highest priority.
