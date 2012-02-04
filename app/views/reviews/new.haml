@@ -2,14 +2,14 @@
   %a{:href => root_path}
     %img{:alt => "Rate My Tenants", :src => "/images/logo.png"}/
 %main#home.container
-  - form_for :tenant, :url => reviews_path do |f|
+  - form_for :property, Property.new, :url => reviews_path do |f|
     .result{:style => "margin-bottom:10px"}
+      - f.fields_for :tenants, f.object.tenants.build do |ff|
+        = ff.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name"}
+        = ff.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name"}
 
-      = f.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name"}
-      = f.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name"}
-
-      - f.fields_for :rating_attributes do |ff|
-        = ff.hidden_field :user_id, {:value => current_user.id}
+      - f.fields_for :ratings, f.object.ratings.build do |ff|
+        /= ff.hidden_field :user_id, {:value => current_user.id}
 
         .questions
           %ul{:style => "padding-top:5px"}
@@ -39,18 +39,17 @@
                 = ff.select :left_owing_money, ["", "No, no money owed", "Yes, for damages", "Yes, for late rent", "Yes, other charges"]
 
     .add-entry-address
-      - f.fields_for :property_attributes do |ff|
-        = ff.hidden_field :user_id, {:value => current_user.id}
-        .clearfix
-          %label{:for => "subject"} Apartment Name / Street Address
-          .input
-            = ff.text_field :name, { :size => 30 }
+      / = f.hidden_field :user_id, {:value => current_user.id}
+      .clearfix
+        %label{:for => "subject"} Apartment Name / Street Address
+        .input
+          = f.text_field :name, { :size => 30 }
 
-        .clearfix
-          %label{:for => "code"} ZIP Code of property
-          .input
-            = ff.text_field :code, { :size => "30", :onblur => "$('#city-name').load('/reviews/zip_to_city?code=' + $(this).val());" }
-            %br
-            #city-name{:style => "height: 25px; padding:5px; float:right;"}
+      .clearfix
+        %label{:for => "zip"} ZIP Code of property
+        .input
+          = f.text_field :zip, { :size => "30", :onblur => "$('#city-name').load('/reviews/zip_to_city?zip=' + $(this).val());" }
+          %br
+          #city-name{:style => "height: 25px; padding:5px; float:right;"}
     .add-entry-submit
       %input.btn.large.primary{:type => "submit", :value => "add entry"}/

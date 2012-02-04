@@ -6,13 +6,13 @@ class ReviewsController < ApplicationController
   # end
 
 	def create
-   @tenant = Tenant.create(params['tenant'].merge(:user_id => current_user.id))
-   render :text => @tenant.errors.full_messages.to_sentence
+   @property = Property.create(params['property'].merge(:user_id => current_user.id))
+   render :text => @property.errors.full_messages.to_sentence
 	end
 
 	# ajax
 	def zip_to_city
-		zip = params["code"]
+		zip = params["zip"]
 		if zip.present?
 			if zip.length != 5
 				render :layout => false, :text => "incorrect ZIP"

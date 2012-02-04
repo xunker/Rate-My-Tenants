@@ -55,19 +55,16 @@ ActiveRecord::Schema.define(:version => 20120203215347) do
   create_table "properties", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.string   "name",       :null => false
-    t.string   "code"
-    t.string   "address"
+    t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "properties", ["user_id", "code"], :name => "index_properties_on_user_id_and_code", :unique => true
   add_index "properties", ["user_id", "name"], :name => "index_properties_on_user_id_and_name", :unique => true
   add_index "properties", ["user_id"], :name => "index_properties_on_user_id"
 
   create_table "ratings", :force => true do |t|
-    t.integer  "user_id",                               :null => false
-    t.integer  "tenant_id",                             :null => false
+    t.integer  "property_id",                           :null => false
     t.integer  "rental_start_month"
     t.integer  "rental_start_year"
     t.integer  "rental_end_month"
@@ -94,9 +91,7 @@ ActiveRecord::Schema.define(:version => 20120203215347) do
   create_table "tenants", :force => true do |t|
     t.string   "first_name",  :null => false
     t.string   "last_name",   :null => false
-    t.integer  "user_id",     :null => false
     t.integer  "property_id", :null => false
-    t.integer  "rating_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

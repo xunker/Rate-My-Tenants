@@ -1,9 +1,5 @@
 class Rating < ActiveRecord::Base
-	belongs_to :user
-	belongs_to :tenant
-
-  validates_presence_of :user_id
-  # validates_presence_of :tenant_id
+	belongs_to :property
 
   # t.integer :rental_start_month
   # t.integer :rental_start_year
