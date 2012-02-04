@@ -10,7 +10,9 @@
     %form
       %input.search-field{:name => "search-field", :onClick => "this.value=''", :type => "text", :value => "Tenant name/phone..."}/
       %input.search-button{:alt => "search", :src => "images/search-button.png", :type => "image"}/
-  %p.safe (We follow all UEA guidelines and are 100% safe to use)
+  .safe
+    %img{:alt => "Seal", :src => "/images/seal.png"}/
+    %p (We follow all UEA guidelines and are 100% safe to use)
   %h2 For example:
   .example
     %img{:alt => "Example", :src => "images/example.png"}/

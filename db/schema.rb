@@ -74,19 +74,11 @@ ActiveRecord::Schema.define(:version => 20120203215347) do
     t.integer  "rental_end_month"
     t.integer  "rental_end_year"
     t.integer  "rent_amount"
-    t.integer  "times_late_paying",  :default => 0,     :null => false
-    t.integer  "noise_complaints",   :default => 0,     :null => false
-    t.boolean  "notice_gave",        :default => true,  :null => false
-    t.boolean  "left_on_time",       :default => true,  :null => false
-    t.boolean  "lease_fulfilled",    :default => true,  :null => false
-    t.boolean  "pets",               :default => false, :null => false
-    t.boolean  "pet_damage",         :default => false, :null => false
-    t.boolean  "evicted",            :default => false, :null => false
-    t.boolean  "skipped",            :default => false, :null => false
-    t.boolean  "would_rent_again",   :default => true,  :null => false
-    t.integer  "amount_owing",       :default => 0
-    t.string   "reason_for_owing"
-    t.text     "comments"
+    t.string   "times_late_paying",                     :null => false
+    t.string   "noise_complaints",                      :null => false
+    t.string   "damage",                                :null => false
+    t.boolean  "skipped_or_evicted", :default => false, :null => false
+    t.string   "left_owing_money",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
