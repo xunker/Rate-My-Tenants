@@ -45,7 +45,7 @@
       .clearfix
         %label{:for => "zip"} ZIP Code of property
         .input
-          = f.text_field :zip, { :size => "30", :onblur => "$('#city-name').load('/reviews/zip_to_city?zip=' + $(this).val());" }
+          = f.text_field :zip, { :size => "30", :onkeyup => "var zip = $(this).val(); if (zip.length == 5) { $('#city-name').load('/reviews/zip_to_city?zip=' + zip); } else { $('#city-name').text('unknown ZIP') }" }
           %br
           #city-name{:style => "height: 25px; padding:5px; float:right;"}
     .add-entry-submit

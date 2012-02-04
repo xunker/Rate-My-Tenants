@@ -41,10 +41,11 @@
         %input.btn.primary.large{:type => "submit", :value => "Save"}/
 
       .page-header
-      %h4 Your Ratings
+      %h4
+        %a{:name => "ratings"} Your Ratings
       .your-ratings
         %ul
-          - if (ratings = current_user.ratings).present?
+          - if (ratings = current_user.ratings.newest_first).present?
             - ratings.each do |rating|
               %li
                 %a{:href => "#"}= rating.name
@@ -54,13 +55,14 @@
                 %a{:href => "#"} Delete
           - else
             %li
-              %em You rated any tenants yet
+              %em You haven't rated any tenants yet
         %br/
         %a.btn{:href => new_review_path} Add another tenant
         %br/
         %br/
       .page-header
-      %h4 Your Properties
+      %h4
+        %a{:name => "properties"} Your Properties
       .your-ratings
         %ul
           - if (properties = current_user.properties).present?
@@ -74,5 +76,5 @@
                 %a{:href => "#"} Delete
           - else
             %li
-              %em You rated any tenants yet
+              %em You haven't added any properties yet
         %br/

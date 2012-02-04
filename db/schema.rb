@@ -29,12 +29,16 @@ ActiveRecord::Schema.define(:version => 20120203215347) do
     t.integer  "user_id",    :null => false
     t.string   "name",       :null => false
     t.string   "zip"
+    t.string   "city"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "properties", ["state"], :name => "index_properties_on_state"
   add_index "properties", ["user_id", "name"], :name => "index_properties_on_user_id_and_name", :unique => true
   add_index "properties", ["user_id"], :name => "index_properties_on_user_id"
+  add_index "properties", ["zip"], :name => "index_properties_on_zip"
 
   create_table "ratings", :force => true do |t|
     t.integer  "property_id",                           :null => false

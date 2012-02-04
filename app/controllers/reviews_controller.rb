@@ -7,7 +7,11 @@ class ReviewsController < ApplicationController
 
 	def create
    @property = Property.create(params['property'].merge(:user_id => current_user.id))
-   render :text => @property.errors.full_messages.to_sentence
+   if @property.errors.present?
+	   render :text => @property.errors.full_messages.to_sentence
+	 else
+	 	redirect_to users_path + '#ratings'
+	 end
 	end
 
 	# ajax
