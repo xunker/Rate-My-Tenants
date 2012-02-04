@@ -1,10 +1,14 @@
-# This controller handles the login/logout function of the site.  
+# This controller handles the login/logout function of the site.
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
 
   # render new.erb.html
   def new
+  end
+
+  def show
+    redirect_back_or_default('/')
   end
 
   def create
