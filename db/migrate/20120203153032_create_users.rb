@@ -11,6 +11,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :remember_token,            :limit => 40
       t.datetime :remember_token_expires_at
       t.boolean :admin, :default => false
+      t.string :first_name, :null => false
+      t.string :last_name, :null => false
+
 
     end
     add_index :users, :login, :unique => true

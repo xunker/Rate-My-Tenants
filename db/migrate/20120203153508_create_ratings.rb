@@ -10,12 +10,23 @@ class CreateRatings < ActiveRecord::Migration
     	t.integer :rental_end_month
       t.integer :rental_end_year
 
-      t.string :pay_on_time # yes, no, sometimes, N/A (as null/blank)
-      t.string :follow_rules # Did they violate lease provisions/house rules?
-      t.string :owe_money # Did they owe you any money when they left?
-      t.string :leave_on_time # Did they leave on time?
-      t.string :pets # Did they have pets?
-      t.string :smoke # Did they smoke?
+      t.integer :rent_amount
+      t.integer :times_late_paying, :null => false, :default => 0
+      t.integer :noise_complaints, :null => false, :default => 0
+      t.boolean :notice_gave, :null => false, :default => true
+      t.boolean :left_on_time, :null => false, :default => true
+      t.boolean :lease_fulfilled, :null => false, :default => true
+      t.boolean :pets, :null => false, :default => false
+      t.boolean :pet_damage, :null => false, :default => false
+      t.boolean :evicted, :null => false, :default => false
+      t.boolean :skipped, :null => false, :default => false
+      t.boolean :would_rent_again, :null => false, :default => true
+
+      t.integer :amount_owing, :default => 0
+      t.string :reason_for_owing # damages, rent, late charges
+
+      t.text :comments
+
 
       t.timestamps
     end
