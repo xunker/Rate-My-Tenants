@@ -2,8 +2,8 @@
   %a{:href => root_path}
     %img{:alt => "Rate My Tenants", :src => "/images/logo.png"}/
 %main#home.container
-  .result{:style => "margin-bottom:10px"}
-    %form
+  - form_for :rating, :url => reviews_path do |f|
+    .result{:style => "margin-bottom:10px"}
       %input.entry-first-name{:name => "entry-first-name", :onClick => "this.value=''", :type => "text", :value => "First name"}/
       %input.entry-last-name{:name => "entry-last-name", :onClick => "this.value=''", :type => "text", :value => "Last name"}/
       .questions
@@ -47,16 +47,16 @@
                 %option Yes, for damages
                 %option Yes, for late rent
                 %option Yes, other charges
-  .add-entry-address
-    .clearfix
-      %label{:for => "subject"} Apartment Name / Street Address
-      .input
-        %input{:name => "add-entry-apartment", :size => "30", :type => "text"}/
-    .clearfix
-      %label{:for => "code"} ZIP Code of property
-      .input
-        %input{:name => "add-entry-code", :size => "30", :type => "text", :onblur => "$('#city-name').load('/reviews/zip_to_city?code=' + $(this).val());"}/
-        %br
-        #city-name{:style => "height: 25px; padding:5px; float:right;"}
-  .add-entry-submit
-    %input.btn.large.primary{:type => "submit", :value => "add entry"}/
+    .add-entry-address
+      .clearfix
+        %label{:for => "subject"} Apartment Name / Street Address
+        .input
+          %input{:name => "add-entry-apartment", :size => "30", :type => "text"}/
+      .clearfix
+        %label{:for => "code"} ZIP Code of property
+        .input
+          %input{:name => "add-entry-code", :size => "30", :type => "text", :onblur => "$('#city-name').load('/reviews/zip_to_city?code=' + $(this).val());"}/
+          %br
+          #city-name{:style => "height: 25px; padding:5px; float:right;"}
+    .add-entry-submit
+      %input.btn.large.primary{:type => "submit", :value => "add entry"}/
