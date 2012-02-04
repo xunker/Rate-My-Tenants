@@ -24,9 +24,11 @@
         #login-bar
           .container
             %p.pull-left
+              =link_to "Home", root_path
+              \&nbsp;-&nbsp;
               %a{:href => new_review_path}
+                Add a Tenant&nbsp;
                 = image_tag("/images/plus.png")
-                Add a Tenant
             %p.pull-right
               %a{:href => users_path}
                 = image_tag("/images/gear.png")
@@ -73,11 +75,11 @@
       = yield
     %footer
       %p
-        %a{:href => "about.html"}> About
+        %a{:href => "/other/contact"}> Contact
         \   |   
-        %a{:href => "team.html"}> Meet the Team
+        %a{:href => "/other/team"}> Meet the Team
         \   |   
-        %a{:href => "terms.html"} Terms
+        %a{:href => "/other/terms"} Terms
         %p
           %script{:language => "JavaScript"} document.write('© ' + (new Date()).getFullYear());
           Rate My Tenants

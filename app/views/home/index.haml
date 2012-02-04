@@ -1,15 +1,14 @@
+%body.home-page/
 .logo
   %a{:href => root_path}
     %img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
 %main#home.container
-  %h1
-    See what other landlords said
-    %br>/
-    about your future tenant:
+
   .search-bar
     - form_tag search_reviews_path, :method => :post do
       = text_field_tag :q, '', { :class => "search-field", :placeholder => "Tenant name..."}
       = image_submit_tag("search-button.png", :class => "search-button")
+
   .safe
     %img{:alt => "Seal", :src => "/images/seal.png"}/
     %p (We respect Federal Fair Housing guidelines and are 100% safe to use)
