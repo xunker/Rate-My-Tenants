@@ -48,12 +48,12 @@ class ReviewsController < ApplicationController
 
   def search
     if params["q"].present?
-      names = params['q'].split(' ')
+      names = params['q'].upcase.split(' ')
       conditions = []
       if names.size == 1
-        conditions = ["last_name = ?", names.first]
+        conditions = ["UPPER(last_name) = ?", names.first]
       else
-        conditions = ["first_name = ? AND last_name = ?", names.first, names[1]]
+        conditions = ["UPPER(first_name) = ? AND UPPER(last_name) = ?", names.first, names[1]]
       end
 
       @results = Rating.find(
