@@ -18,8 +18,8 @@
   - f.fields_for :ratings do |ff|
     - if params['review_id'].present?
       - next unless ff.object.id == params['review_id'].to_i
-    = ff.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name", :value => "First name", :onClick => "this.value=''"}
-    = ff.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name", :value => "Last name", :onClick => "this.value=''"}
+    = ff.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name" }
+    = ff.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name" }
 
     .address
       - if f.object.new_record?
