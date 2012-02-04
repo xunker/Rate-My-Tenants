@@ -18,13 +18,13 @@
   - f.fields_for :ratings do |ff|
     - if params['review_id'].present?
       - next unless ff.object.id == params['review_id'].to_i
-    = ff.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name"}
-    = ff.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name"}
+    = ff.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name", :value => "First name", :onClick => "this.value=''"}
+    = ff.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name", :value => "Last name", :onClick => "this.value=''"}
 
     .address
       - if f.object.new_record?
-        = f.text_field :name, { :id => 'property-name', :class => 'name-field', :placeholder => "Apartment name or address"}
-        = f.text_field :zip, { :id => 'property-zip', :class => 'zip-field', :placeholder => "Zipcode", :onkeyup => "get_city_state_from_zip_field();"}
+        = f.text_field :name, { :id => 'property-name', :class => 'name-field', :placeholder => "Apartment name or address", :value => "Apartment name or address", :onClick => "this.value=''"}
+        = f.text_field :zip, { :id => 'property-zip', :class => 'zip-field', :placeholder => "Zipcode", :onkeyup => "get_city_state_from_zip_field();", :value => "Zipcode", :onClick => "this.value=''"}
         #city-name{:style => "float:right;margin-right:25px;"}
       - else
         .name-field= [f.object.name, f.object.zip, f.object.city, f.object.state].join(', ')
