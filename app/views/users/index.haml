@@ -56,4 +56,23 @@
             %li
               %em You rated any tenants yet
         %br/
-        %a.btn{:href => "#"} Add another tenant
+        %a.btn{:href => new_review_path} Add another tenant
+        %br/
+        %br/
+      .page-header
+      %h4 Your Properties
+      .your-ratings
+        %ul
+          - if (properties = current_user.properties).present?
+            - properties.each do |property|
+              %li
+                %a{:href => "#"}= property.name
+                \(#{property.zip})
+                \-
+                %a{:href => "#"} Edit
+                \-
+                %a{:href => "#"} Delete
+          - else
+            %li
+              %em You rated any tenants yet
+        %br/
