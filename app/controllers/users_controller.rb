@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
-    @user = User.new
+    @user = User.new(:first_name => '', :last_name => '')
   end
 
   def create

@@ -7,6 +7,11 @@ class Message < ActiveRecord::Base
 	named_scope :read, :conditions => "read_at IS NOT NULL"
 	named_scope :unread, :conditions => "read_at IS NULL"
 
+	validates_presence_of :message
+	validates_presence_of :to_user_id
+	validates_presence_of :from_user_id
+	validates_presence_of :review_id
+
 	def review
 		'not implimented'
 	end

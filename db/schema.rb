@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120203215347) do
+ActiveRecord::Schema.define(:version => 20120204000038) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "tenant_id",                                          :null => false
@@ -66,23 +66,19 @@ ActiveRecord::Schema.define(:version => 20120203215347) do
   add_index "properties", ["user_id"], :name => "index_properties_on_user_id"
 
   create_table "ratings", :force => true do |t|
-    t.integer  "user_id",                               :null => false
-    t.integer  "tenant_id",                             :null => false
-    t.integer  "property_id",                           :null => false
+    t.integer  "user_id",            :null => false
+    t.integer  "tenant_id",          :null => false
+    t.integer  "property_id",        :null => false
     t.integer  "rental_start_month"
     t.integer  "rental_start_year"
     t.integer  "rental_end_month"
     t.integer  "rental_end_year"
-    t.boolean  "pay_on_time",        :default => true,  :null => false
-    t.boolean  "pets",               :default => false, :null => false
-    t.boolean  "followed_rules",     :default => true,  :null => false
-    t.boolean  "gave_proper_notice", :default => true,  :null => false
-    t.boolean  "leave_on_time",      :default => true,  :null => false
-    t.boolean  "owe_money",          :default => true,  :null => false
-    t.integer  "overall_rating"
-    t.boolean  "deposits_returned"
-    t.boolean  "smoking"
-    t.boolean  "evicted"
+    t.string   "pay_on_time"
+    t.string   "follow_rules"
+    t.string   "owe_money"
+    t.string   "leave_on_time"
+    t.string   "pets"
+    t.string   "smoke"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -116,6 +112,8 @@ ActiveRecord::Schema.define(:version => 20120203215347) do
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
     t.boolean  "admin",                                    :default => false
+    t.string   "first_name",                               :default => "unknown"
+    t.string   "last_name",                                :default => "unknown"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

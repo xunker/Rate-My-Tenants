@@ -6,24 +6,16 @@ class CreateRatings < ActiveRecord::Migration
     	t.integer :property_id, :null => false
 
     	t.integer :rental_start_month
-        t.integer :rental_start_year
+      t.integer :rental_start_year
     	t.integer :rental_end_month
-        t.integer :rental_end_year
+      t.integer :rental_end_year
 
-    	# official questions
-    	t.boolean :pay_on_time, :null => false, :default => true
-    	t.boolean :pets, :null => false, :default => false
-    	t.boolean :followed_rules, :null => false, :default => true
-    	t.boolean :gave_proper_notice, :null => false, :default => true
-    	t.boolean :leave_on_time, :null => false, :default => true
-    	t.boolean :owe_money, :null => false, :default => true
-
-    	# our questions -- null is abstain
-    	t.integer :overall_rating, :null => true
-    	t.boolean :deposits_returned, :null => true
-    	t.boolean :smoking, :null => true
-    	t.boolean :evicted, :null => true
-
+      t.string :pay_on_time # yes, no, sometimes, N/A (as null/blank)
+      t.string :follow_rules # Did they violate lease provisions/house rules?
+      t.string :owe_money # Did they owe you any money when they left?
+      t.string :leave_on_time # Did they leave on time?
+      t.string :pets # Did they have pets?
+      t.string :smoke # Did they smoke?
 
       t.timestamps
     end
