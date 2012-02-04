@@ -68,25 +68,15 @@ ActiveRecord::Schema.define(:version => 20120203215347) do
   create_table "ratings", :force => true do |t|
     t.integer  "user_id",                               :null => false
     t.integer  "tenant_id",                             :null => false
-    t.integer  "property_id",                           :null => false
     t.integer  "rental_start_month"
     t.integer  "rental_start_year"
     t.integer  "rental_end_month"
     t.integer  "rental_end_year"
-    t.integer  "rent_amount"
-    t.integer  "times_late_paying",  :default => 0,     :null => false
-    t.integer  "noise_complaints",   :default => 0,     :null => false
-    t.boolean  "notice_gave",        :default => true,  :null => false
-    t.boolean  "left_on_time",       :default => true,  :null => false
-    t.boolean  "lease_fulfilled",    :default => true,  :null => false
-    t.boolean  "pets",               :default => false, :null => false
-    t.boolean  "pet_damage",         :default => false, :null => false
-    t.boolean  "evicted",            :default => false, :null => false
-    t.boolean  "skipped",            :default => false, :null => false
-    t.boolean  "would_rent_again",   :default => true,  :null => false
-    t.integer  "amount_owing",       :default => 0
-    t.string   "reason_for_owing"
-    t.text     "comments"
+    t.string   "times_late_paying",                     :null => false
+    t.string   "noise_complaints",                      :null => false
+    t.string   "damage",                                :null => false
+    t.boolean  "skipped_or_evicted", :default => false, :null => false
+    t.string   "left_owing_money",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -102,9 +92,11 @@ ActiveRecord::Schema.define(:version => 20120203215347) do
   add_index "telephone_numbers", ["tenant_id"], :name => "index_telephone_numbers_on_tenant_id"
 
   create_table "tenants", :force => true do |t|
-    t.string   "first_name",     :null => false
-    t.string   "last_name",      :null => false
-    t.string   "ssn_last_fours"
+    t.string   "first_name",  :null => false
+    t.string   "last_name",   :null => false
+    t.integer  "user_id",     :null => false
+    t.integer  "property_id", :null => false
+    t.integer  "rating_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

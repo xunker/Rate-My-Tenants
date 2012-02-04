@@ -3,7 +3,6 @@ class CreateRatings < ActiveRecord::Migration
     create_table :ratings do |t|
     	t.integer :user_id, :null => false
     	t.integer :tenant_id, :null => false
-    	t.integer :property_id, :null => false
 
     	t.integer :rental_start_month
       t.integer :rental_start_year

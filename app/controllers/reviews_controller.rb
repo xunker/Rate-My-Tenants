@@ -1,7 +1,13 @@
 class ReviewsController < ApplicationController
-	before_filter :login_required, :only => [ :edit, :update ]
+	before_filter :login_required
+
+  # def new
+  #   @rating = Rating.new
+  # end
 
 	def create
+   @tenant = Tenant.create(params['tenant'].merge(:user_id => current_user.id))
+   render :text => @tenant.errors.full_messages.to_sentence
 	end
 
 	# ajax

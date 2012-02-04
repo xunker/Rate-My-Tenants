@@ -2,61 +2,55 @@
   %a{:href => root_path}
     %img{:alt => "Rate My Tenants", :src => "/images/logo.png"}/
 %main#home.container
-  - form_for :rating, :url => reviews_path do |f|
+  - form_for :tenant, :url => reviews_path do |f|
     .result{:style => "margin-bottom:10px"}
-      %input.entry-first-name{:name => "entry-first-name", :onClick => "this.value=''", :type => "text", :value => "First name"}/
-      %input.entry-last-name{:name => "entry-last-name", :onClick => "this.value=''", :type => "text", :value => "Last name"}/
-      .questions
-        %ul{:style => "padding-top:5px"}
-          - ["Were they late paying the rent?", "Did they recieve any noise complaints?", "Did they cause damange to the property?", "Did they skip or were they evicted?", "Did they leave owing any money?"].each do |question|
-            %li{:class => cycle('even', 'odd')}= question
 
-      .add-entry
-        %ul{:style => "padding-top:5px"}
-          %li
-            .controls
-              %select{:name => 'times_late_paying'}
-                %option --
-                %option No, Never
-                %option Sometimes
-                %option Often
-          %li
-            .controls
-              %select{:name => "noise_complaints"}
-                %option --
-                %option No, Never
-                %option Sometimes
-                %option Often
-          %li
-            .controls
-              %select{:name => "damage" }
-                %option --
-                %option No
-                %option Yes
-          %li
-            .controls
-              %select{:name => "skipped_or_evicted"}
-                %option --
-                %option No
-                %option Yes
-          %li
-            .controls
-              %select{:name => "left_owing_money"}
-                %option --
-                %option No, no money owed
-                %option Yes, for damages
-                %option Yes, for late rent
-                %option Yes, other charges
+      = f.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name"}
+      = f.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name"}
+
+      - f.fields_for :rating_attributes do |ff|
+        = ff.hidden_field :user_id, {:value => current_user.id}
+
+        .questions
+          %ul{:style => "padding-top:5px"}
+            - ["Were they late paying the rent?", "Did they recieve any noise complaints?", "Did they cause damange to the property?", "Did they skip or were they evicted?", "Did they leave owing any money?"].each do |question|
+              %li{:class => cycle('even', 'odd')}= question
+
+        .add-entry
+          %ul{:style => "padding-top:5px"}
+            %li
+              .controls
+                = ff.select :times_late_paying, ["", "No, Never", "Sometimes", "Often"]
+
+            %li
+              .controls
+                = ff.select :noise_complaints, ["", "No, Never", "Sometimes", "Often"]
+
+            %li
+              .controls
+                = ff.select :damage, ["", "No", "Yes"]
+
+            %li
+              .controls
+                = ff.select :skipped_or_evicted, [["", nil], ["No", false], ["Yes", true]]
+
+            %li
+              .controls
+                = ff.select :left_owing_money, ["", "No, no money owed", "Yes, for damages", "Yes, for late rent", "Yes, other charges"]
+
     .add-entry-address
-      .clearfix
-        %label{:for => "subject"} Apartment Name / Street Address
-        .input
-          %input{:name => "add-entry-apartment", :size => "30", :type => "text"}/
-      .clearfix
-        %label{:for => "code"} ZIP Code of property
-        .input
-          %input{:name => "add-entry-code", :size => "30", :type => "text", :onblur => "$('#city-name').load('/reviews/zip_to_city?code=' + $(this).val());"}/
-          %br
-          #city-name{:style => "height: 25px; padding:5px; float:right;"}
+      - f.fields_for :property_attributes do |ff|
+        = ff.hidden_field :user_id, {:value => current_user.id}
+        .clearfix
+          %label{:for => "subject"} Apartment Name / Street Address
+          .input
+            = ff.text_field :name, { :size => 30 }
+
+        .clearfix
+          %label{:for => "code"} ZIP Code of property
+          .input
+            = ff.text_field :code, { :size => "30", :onblur => "$('#city-name').load('/reviews/zip_to_city?code=' + $(this).val());" }
+            %br
+            #city-name{:style => "height: 25px; padding:5px; float:right;"}
     .add-entry-submit
       %input.btn.large.primary{:type => "submit", :value => "add entry"}/
