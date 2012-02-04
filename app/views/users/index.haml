@@ -68,10 +68,8 @@
           - if (properties = current_user.properties).present?
             - properties.each do |property|
               %li
-                %a{:href => "#"}= property.name
+                = link_to property.name, property_path(property)
                 \(#{property.zip})
-                \-
-                %a{:href => "#"} Edit
                 \-
                 = link_to "Delete", property_path(property), :method => :delete
           - else

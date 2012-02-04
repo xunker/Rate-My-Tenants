@@ -11,6 +11,14 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find_by_id_and_user_id(params[:id], current_user.id)
+    @property.update_attributes(params["property"])
+    if @property.errors.present?
+      flash[:error] = @property.errors.full_messages.to_sentence
+      render :action => 'edit'
+    else
+      flash[:notice] = "Property Updated"
+      redirect_to users_path+"#properties"
+    end
   end
 
   def edit

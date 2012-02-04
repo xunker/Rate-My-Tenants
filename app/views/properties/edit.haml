@@ -1,0 +1,24 @@
+%main#home.container{:style => "min-height:600px"}
+  %h4 Editing property "#{@property.name}"
+  - form_for @property, property_path(@property) do |f|
+    %p
+      = f.label :name, "Property Name"
+      = f.text_field :name
+    %p
+      = f.label :zip, "ZIP Code"
+      = f.text_field :zip
+    %p
+      = f.submit "Update Property"
+
+  %br
+  %br
+  .page-header
+  %br
+  - if @property.ratings.empty?
+    %h5 There are not rating on this property
+  - else
+    %h5 The following reviews are connected to this property
+    %ul
+    - @property.ratings.each do |rating|
+      %li= rating.name
+
