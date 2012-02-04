@@ -56,16 +56,16 @@
             = ff.select :left_owing_money, ["", "No, no money owed", "Yes, for damages", "Yes, for late rent", "Yes, other charges"]
 
       - if f.object.new_record?
-        .existing-properties{:style => "float:right;"}
+        .existing-properties
           %p
-            %strong Your Properties
+            %strong Your Properties:
           %ul
             - if current_user.properties.empty?
               %li
                 %em
                   You haven't added any propeties yet.
                   %br
-                  Please use the form to the right.
+                  Please use the form to the left.
             - else
               - current_user.properties.each do |property|
                 %li= link_to_function(property.name, "populate_property_form('" + property.name + "', '" + property.zip + "');");
