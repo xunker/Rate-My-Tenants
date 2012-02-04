@@ -45,6 +45,12 @@ ul { list-style-type: none; margin: 0; }
 		margin-bottom: 0;
 		padding: 20px 0 0 100px;
 	}
+#sign-up-form h1 {
+	margin: 30px 0 30px 120px;
+}
+#sign-up-form form {
+	padding-left: 100px;
+}
 #login-bar {
 	width: 100%;
 	background: url('../images/dark-denim.gif')repeat #000;
@@ -140,9 +146,9 @@ footer {
 }
 .safe {
 	margin: 0 auto;
-	width: 380px;
-	height: 50px;
-	border: 1px solid red;
+	width: 460px;
+	height: 40px;
+	margin-top: 8px;
 }
 .safe img {
 	float: left;
@@ -192,7 +198,7 @@ footer {
 	}
 	.questions {
 		float: left;
-		width: 600px;
+		width: 500px;
 		/*outline: 1px solid gold;*/
 	}
 		.questions ul {
@@ -200,7 +206,7 @@ footer {
 		}
 		.questions ul li, .answers ul li {
 			font-size: 17px;
-			line-height: 30px;
+			line-height: 38px;
 		}
 	.answers, .add-entry {
 		float: right;
@@ -208,7 +214,7 @@ footer {
 		/*outline: 1px solid gold;*/
 	}
 		.add-entry {
-			width: 105px;
+			width: 195px;
 		}
 		.answers ul, .add-entry ul {
 			padding: 25px 0 0 0;
@@ -244,28 +250,31 @@ footer {
 	}
 	.add-entry select {
 		width: 150px;
-		margin-bottom: 3px;
+		margin-bottom: 14px;
 	}
 		.add-entry-address {
-			width: 450px;
+			width: 710px;
 			float: left;
 		}
 		.add-entry-address .clearfix {
 			height: 34px;
+			margin-left: 26px;
 		}
 		.add-entry-address label {
 			width: 220px;
 			margin-right: 7px;
 		}
-		.add-entry-submit {
-			float: right;
-			margin: 26px 20px 0 0;
+		.add-entry-address .btn {
+			margin: 10px 0 0 253px;
 		}
 		.challenge {
 			text-align: center;
 		}
 		.challenge a {
 			color: #dda539;
+		}
+		input[type="checkbox"] {
+			margin-left: 80px;
 		}
 
 

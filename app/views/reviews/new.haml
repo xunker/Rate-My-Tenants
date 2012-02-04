@@ -58,5 +58,6 @@
         %input{:name => "add-entry-code", :size => "30", :type => "text", :onblur => "$('#city-name').load('/reviews/zip_to_city?code=' + $(this).val());"}/
         %br
         #city-name{:style => "height: 25px; padding:5px; float:right;"}
-  .add-entry-submit
+    %input{:checked => "", :type => "checkbox"}
+      I agree with the <a href="/terms">terms and conditons</a> and understand that all data I entered is my opinion
     %input.btn.large.primary{:type => "submit", :value => "add entry"}/
