@@ -3,11 +3,17 @@ class ReviewsController < ApplicationController
 
   def new
     @property = Property.new
-    @property.ratings = [@property.ratings.build(:skipped_or_evicted => "")]
+    @property.ratings = [@property.ratings.build(:skipped_or_evicted => "")] # override boolean default
   end
 
   def show
   	@property = Property.find_by_id_and_user_id(params[:id], current_user.id)
+  end
+
+  def update
+  	@property = Property.find_by_id_and_user_id(params[:id], current_user.id)
+  	@property.update_attributes(params['property'])
+  	redirect_to users_path + "#reviews"
   end
 
 	def create

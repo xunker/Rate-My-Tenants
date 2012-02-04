@@ -4,8 +4,8 @@
 - if @property.errors.present?
   .alert-message.error= @property.errors.full_messages.to_sentence
 %main#home.container
-  - form_for :property, @property, :url => reviews_path do |f|
+  - form_for @property, :url => review_path(@property), :method => :put do |f|
     = render :partial => 'form', :locals => { :f => f }
 
     .add-entry-address
-      %input.btn.large.primary{:type => "submit", :value => "add entry"}/
+      %input.btn.large.primary{:type => "submit", :value => "update entry"}/

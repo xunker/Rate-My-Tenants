@@ -48,9 +48,7 @@
           - if (ratings = current_user.ratings.newest_first).present?
             - ratings.each do |rating|
               %li
-                %a{:href => "#"}= rating.name
-                \-
-                %a{:href => "#"} Edit
+                = link_to rating.name, "/reviews/#{rating.property.id}?review_id=#{rating.id}"
                 \-
                 %a{:href => "#"} Delete
           - else

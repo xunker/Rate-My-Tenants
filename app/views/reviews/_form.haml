@@ -1,0 +1,48 @@
+.result{:style => "margin-bottom:10px"}
+  - f.fields_for :ratings do |ff|
+    = ff.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name"}
+    = ff.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name"}
+
+    .questions
+      %ul{:style => "padding-top:5px"}
+        - ["Were they late paying the rent?", "Did they recieve any noise complaints?", "Did they cause damange to the property?", "Did they skip or were they evicted?", "Did they leave owing any money?"].each do |question|
+          %li{:class => cycle('even', 'odd')}= question
+
+    .add-entry
+      %ul{:style => "padding-top:5px"}
+        %li
+          .controls
+            = ff.select :times_late_paying, ["", "No, Never", "Sometimes", "Often"]
+
+        %li
+          .controls
+            = ff.select :noise_complaints, ["", "No, Never", "Sometimes", "Often"]
+
+        %li
+          .controls
+            = ff.select :damage, ["", "No", "Yes"]
+
+        %li
+          .controls
+            = ff.select :skipped_or_evicted, [["", nil], ["No", false], ["Yes", true]]
+
+        %li
+          .controls
+            = ff.select :left_owing_money, ["", "No, no money owed", "Yes, for damages", "Yes, for late rent", "Yes, other charges"]
+
+
+
+
+.add-entry-address
+  .clearfix
+    %label{:for => "name"} Apartment Name / Street Address
+    .input
+      = f.text_field :name, { :size => 30 }
+  .clearfix
+    %label{:for => "code"} ZIP Code of property
+    .input
+      = f.text_field :zip, { :size => "30", :onkeyup => "var zip = $(this).val(); if (zip.length == 5) { $('#city-name').load('/reviews/zip_to_city?zip=' + zip); } else { $('#city-name').text('unknown ZIP') }" }
+      %br
+      #city-name{:style => "height: 25px; padding:5px; float:right;"}
+  = check_box_tag :accepted_terms, true, true
+  I agree with the <a href="/terms">terms and conditons</a> and understand that all data I entered is my opinion
