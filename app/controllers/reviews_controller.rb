@@ -21,7 +21,12 @@ class ReviewsController < ApplicationController
   end
 
 	def create
-   @property = Property.create(params['property'].merge(:user_id => current_user.id))
+   # @property = Property.create(params['property'].merge(:user_id => current_user.id))
+   @property = Property.find_or_create_by_name_and_user_id(
+    params['property']['name'], current_user.id
+   )
+   @property.update_attributes(params['property'])
+
    if @property.errors.present?
 		 render :action => "new"
 	   # render :text => @property.errors.full_messages.to_sentence
