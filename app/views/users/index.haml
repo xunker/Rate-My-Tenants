@@ -39,40 +39,21 @@
           = f.text_field :last_name
       .clearfix.actions
         %input.btn.primary.large{:type => "submit", :value => "Save"}/
-      
+
       .page-header
       %h4 Your Ratings
       .your-ratings
         %ul
-          %li
-            %a{:href => "#"} John Doe
-            \-
-            %a{:href => "#"} Edit
-            \-
-            %a{:href => "#"} Delete
-          %li
-            %a{:href => "#"} John Doe
-            \-
-            %a{:href => "#"} Edit
-            \-
-            %a{:href => "#"} Delete
-          %li
-            %a{:href => "#"} John Doe
-            \-
-            %a{:href => "#"} Edit
-            \-
-            %a{:href => "#"} Delete
-          %li
-            %a{:href => "#"} John Doe
-            \-
-            %a{:href => "#"} Edit
-            \-
-            %a{:href => "#"} Delete
-          %li
-            %a{:href => "#"} John Doe
-            \-
-            %a{:href => "#"} Edit
-            \-
-            %a{:href => "#"} Delete
+          - if (ratings = current_user.ratings).present?
+            - ratings.each do |rating|
+              %li
+                %a{:href => "#"}= rating.tenant.name
+                \-
+                %a{:href => "#"} Edit
+                \-
+                %a{:href => "#"} Delete
+          - else
+            %li
+              %em You rated any tenants yet
         %br/
         %a.btn{:href => "#"} Add another tenant
