@@ -1,30 +1,33 @@
-%h1 Sign up as a new user
-- @user.password = @user.password_confirmation = nil
+.container#sign-up-form
+  %h1 Sign up as a new user
+  - @user.password = @user.password_confirmation = nil
 
-= error_messages_for :user
-- form_for :user, :url => users_path do |f|
-	%p= f.label :login, "Login Name"
-	%br
-	= f.text_field :login
-
-	%p= f.label :email
-	%br
-	= f.text_field :email
-
-	%p= f.label :first_name
-	%br
-	= f.text_field :first_name
-
-	%p= f.label :last_name
-	%br
-	= f.text_field :last_name
-
-	%p= f.label :password
-	%br
-	= f.password_field :password
-
-	%p= f.label :password_confirmation, 'Confirm Password'
-	%br
-	= f.password_field :password_confirmation
-
-	%p= submit_tag 'Sign up'
+  = error_messages_for :user
+  - form_for :user, :url => users_path do |f|
+    .clearfix
+      = f.label :login, 'User Name'
+      .input
+        = f.text_field :login
+    .clearfix
+      = f.label :email, 'Your Email Address'
+      .input
+        = f.text_field :email
+    .clearfix
+      = f.label :first_name
+      .input
+        = f.text_field :first_name
+    .clearfix
+      = f.label :last_name
+      .input
+        = f.text_field :last_name
+    .clearfix
+      = f.label :password, 'New Password'
+      .input
+        = f.password_field :password, :autocomplete => "off"
+    .clearfix
+      = f.label :password_confirmation, 'Confirm Password'  
+      .input
+        = f.password_field :password_confirmation, :autocomplete => "off"
+    
+    .clearfix.actions
+      %input.btn.primary.large{:type => "submit", :value => "Sign Up"}/

@@ -1,1 +1,45 @@
-tenant search page
+.logo
+  %a{:href => "index.html"}
+    %img{:alt => "Rate My Tenants", :src => "/images/logo.png"}/
+%main#home.container
+  .search-bar
+    %form
+      %input.search-field{:name => "search-field", :onClick => "this.value=''", :type => "text", :value => "Tenant name/phone..."}/
+      %input.search-button{:alt => "search", :src => "/images/search-button.png", :type => "image"}/
+  %h2
+    Search results for:
+    %em John Doe
+  %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "710"}
+    %tr
+      %td
+        %strong Name
+      %td
+        %strong Location
+      %td
+        %strong Landlord
+      %td
+        %strong Date
+    %tr
+      %td
+        %a{:href => "#"} John Doe
+      %td Oakridge Apartments, Salt Lake City
+      %td Ron Swanson
+      %td 02/13/12
+    %tr
+      %td
+        %a{:href => "#"} John Doe
+      %td Oakridge Apartments, Salt Lake City
+      %td Ron Swanson
+      %td 02/13/12
+    %tr
+      %td
+        %a{:href => "#"} John Doe
+      %td Oakridge Apartments, Salt Lake City
+      %td Ron Swanson
+      %td 02/13/12
+    %tr
+      %td
+        %a{:href => "#"} John Doe
+      %td Oakridge Apartments, Salt Lake City
+      %td Ron Swanson
+      %td 02/13/12
