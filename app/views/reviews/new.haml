@@ -15,33 +15,33 @@
         %ul{:style => "padding-top:5px"}
           %li
             .controls
-              %select#select01
+              %select{:name => 'times_late_paying'}
                 %option --
                 %option No, Never
                 %option Sometimes
                 %option Often
           %li
             .controls
-              %select#select01
+              %select{:name => "noise_complaints"}
                 %option --
                 %option No, Never
                 %option Sometimes
                 %option Often
           %li
             .controls
-              %select#select01
+              %select{:name => "damage" }
                 %option --
                 %option No
                 %option Yes
           %li
             .controls
-              %select#select01
+              %select{:name => "skipped_or_evicted"}
                 %option --
                 %option No
                 %option Yes
           %li
             .controls
-              %select#select01
+              %select{:name => "left_owing_money"}
                 %option --
                 %option No, no money owed
                 %option Yes, for damages

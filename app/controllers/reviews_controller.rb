@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
 	before_filter :login_required, :only => [ :edit, :update ]
 
+	def create
+	end
+
 	# ajax
 	def zip_to_city
 		zip = params["code"]
