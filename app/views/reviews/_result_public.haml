@@ -3,8 +3,7 @@
   = rating.last_name
 
   .address
-      = f.text_field :name, { :class => 'name-field', :placeholder => "Apartment name or address"}
-      = f.text_field :zip, { :class => 'zip-field', :placeholder => "Zipcode", :onkeyup => "var zip = $(this).val(); if (zip.length == 5) { $('#city-name').load('/reviews/zip_to_city?zip=' + zip); } else { $('#city-name').text('unknown ZIP') }"}
+    = [rating.property.name, rating.property.city, rating.property.state, rating.property.zip].compact.join(', ')
 
   .questions
     %ul{:style => "padding-top:2px"}
@@ -30,5 +29,5 @@
           = rating.left_owing_money
       %li
         .controls
-          = rating.property.name, rating.property.city, rating.property.state, rating.property.zip
+          = [rating.property.name, rating.property.city, rating.property.state, rating.property.zip].join(', ')
 
