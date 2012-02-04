@@ -7,10 +7,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
-  map.resources :tenants, :collection => { :search => [:get, :post] } do |tenants|
-    tenants.resource :search
-  end
-
   map.resources :reviews, :collection => { :zip_to_city => :get }
   map.resources :messages
 

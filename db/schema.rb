@@ -11,33 +11,6 @@
 
 ActiveRecord::Schema.define(:version => 20120203215347) do
 
-  create_table "addresses", :force => true do |t|
-    t.integer  "tenant_id",                                          :null => false
-    t.string   "address_1",                                          :null => false
-    t.string   "address_2"
-    t.string   "city",                                               :null => false
-    t.string   "state",                                              :null => false
-    t.string   "postal",                                             :null => false
-    t.string   "country",    :default => "United States of America"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "addresses", ["address_1", "state"], :name => "index_addresses_on_address_1_and_state"
-  add_index "addresses", ["tenant_id"], :name => "index_addresses_on_tenant_id"
-
-  create_table "id_card_numbers", :force => true do |t|
-    t.integer  "tenant_id",  :null => false
-    t.string   "state",      :null => false
-    t.string   "type",       :null => false
-    t.string   "number",     :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "id_card_numbers", ["tenant_id", "state", "type", "number"], :name => "tid_state_type_number", :unique => true
-  add_index "id_card_numbers", ["tenant_id"], :name => "index_id_card_numbers_on_tenant_id"
-
   create_table "messages", :force => true do |t|
     t.integer  "from_user_id", :null => false
     t.integer  "to_user_id",   :null => false
@@ -65,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20120203215347) do
 
   create_table "ratings", :force => true do |t|
     t.integer  "property_id",                           :null => false
+    t.string   "first_name",                            :null => false
+    t.string   "last_name",                             :null => false
     t.integer  "rental_start_month"
     t.integer  "rental_start_year"
     t.integer  "rental_end_month"
@@ -74,24 +49,6 @@ ActiveRecord::Schema.define(:version => 20120203215347) do
     t.string   "damage",                                :null => false
     t.boolean  "skipped_or_evicted", :default => false, :null => false
     t.string   "left_owing_money",                      :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "telephone_numbers", :force => true do |t|
-    t.integer  "tenant_id",  :null => false
-    t.string   "number",     :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "telephone_numbers", ["number"], :name => "index_telephone_numbers_on_number"
-  add_index "telephone_numbers", ["tenant_id"], :name => "index_telephone_numbers_on_tenant_id"
-
-  create_table "tenants", :force => true do |t|
-    t.string   "first_name",  :null => false
-    t.string   "last_name",   :null => false
-    t.integer  "property_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

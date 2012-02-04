@@ -3,6 +3,9 @@ class CreateRatings < ActiveRecord::Migration
     create_table :ratings do |t|
     	t.integer :property_id, :null => false
 
+      t.string :first_name, :null => false
+      t.string :last_name, :null => false
+
     	t.integer :rental_start_month
       t.integer :rental_start_year
     	t.integer :rental_end_month

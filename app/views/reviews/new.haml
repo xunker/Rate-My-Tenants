@@ -4,12 +4,9 @@
 %main#home.container
   - form_for :property, Property.new, :url => reviews_path do |f|
     .result{:style => "margin-bottom:10px"}
-      - f.fields_for :tenants, f.object.tenants.build do |ff|
+      - f.fields_for :ratings, f.object.ratings.build do |ff|
         = ff.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name"}
         = ff.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name"}
-
-      - f.fields_for :ratings, f.object.ratings.build do |ff|
-        /= ff.hidden_field :user_id, {:value => current_user.id}
 
         .questions
           %ul{:style => "padding-top:5px"}

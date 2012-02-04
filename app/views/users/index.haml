@@ -47,7 +47,7 @@
           - if (ratings = current_user.ratings).present?
             - ratings.each do |rating|
               %li
-                %a{:href => "#"}= rating.tenant.name
+                %a{:href => "#"}= rating.name
                 \-
                 %a{:href => "#"} Edit
                 \-
