@@ -99,9 +99,9 @@ footer {
 	-moz-border-radius: 12px;
 	border-radius: 12px;
 	background: url('../images/black.png') repeat;
-	box-shadow:inset 0px 0px 85px rgba(0,0,0,.5);
-	-webkit-box-shadow:inset 0px 0px 85px rgba(0,0,0,.5);
-	-moz-box-shadow:inset 0px 0px 85px rgba(0,0,0,.5);
+	box-shadow:inset 0px 0px 15px rgba(0,0,0,.5);
+	-webkit-box-shadow:inset 0px 0px 15px rgba(0,0,0,.5);
+	-moz-box-shadow:inset 0px 0px 15px rgba(0,0,0,.5);
 }
 .search-bar form {
 	margin: 0;
@@ -126,6 +126,9 @@ footer {
 		line-height: 36px;
 		font-family: 'Cardo', georgia, cambria, serif;;
 		color: white;
+		box-shadow:inset 0px 0px 15px rgba(0,0,0,.8);
+		-webkit-box-shadow:inset 0px 0px 15px rgba(0,0,0,.8);
+		-moz-box-shadow:inset 0px 0px 15px rgba(0,0,0,.8);
 	}
 	.search-button {
 		width: 218px;
@@ -215,7 +218,7 @@ footer {
 		}
 		.questions ul li, .answers ul li {
 			font-size: 17px;
-			line-height: 38px;
+			line-height: 31px;
 		}
 	.answers, .add-entry {
 		float: right;
@@ -259,7 +262,7 @@ footer {
 	}
 	.add-entry select {
 		width: 150px;
-		margin-bottom: 14px;
+		margin-bottom: 5px;
 	}
 		.add-entry-address {
 			width: 710px;
@@ -285,6 +288,15 @@ footer {
 		input[type="checkbox"] {
 			margin-left: 80px;
 		}
+	.address {
+		margin: 8px 0 0 60px;
+	}
+		.zip-field {
+			width: 100px;
+		}
+		.name-field {
+			width: 285px;
+		}
 
 
 /* Search Results */
@@ -304,5 +316,5 @@ footer {
 	}
 
 #sub {
-	min-height: 500px;
+	min-height: 550px;
 }

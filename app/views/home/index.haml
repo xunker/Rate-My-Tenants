@@ -4,7 +4,7 @@
     %img{:alt => "Rate My Tenants", :src => "images/logo.png"}/
 %main#home.container
 
-  .search-bar
+  .search-bar{:style => "margin-top:170px"}
     - form_tag search_reviews_path, :method => :post do
       = text_field_tag :q, '', { :class => "search-field", :placeholder => "Tenant name..."}
       = image_submit_tag("search-button.png", :class => "search-button")

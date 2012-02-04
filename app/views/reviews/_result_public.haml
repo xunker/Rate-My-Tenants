@@ -2,43 +2,33 @@
   = rating.first_name
   = rating.last_name
 
+  .address
+      = f.text_field :name, { :class => 'name-field', :placeholder => "Apartment name or address"}
+      = f.text_field :zip, { :class => 'zip-field', :placeholder => "Zipcode", :onkeyup => "var zip = $(this).val(); if (zip.length == 5) { $('#city-name').load('/reviews/zip_to_city?zip=' + zip); } else { $('#city-name').text('unknown ZIP') }"}
+
   .questions
-    %ul{:style => "padding-top:5px"}
+    %ul{:style => "padding-top:2px"}
       - ["Were they late paying the rent?", "Did they recieve any noise complaints?", "Did they cause damange to the property?", "Did they skip or were they evicted?", "Did they leave owing any money?"].each do |question|
         %li{:class => cycle('even', 'odd')}= question
 
   .add-entry
-    %ul{:style => "padding-top:5px"}
+    %ul{:style => "padding-top:2px"}
       %li
         .controls
           = rating.times_late_paying
-
       %li
         .controls
           = rating.noise_complaints
-
       %li
         .controls
           = rating.damage
-
       %li
         .controls
           = rating.skipped_or_evicted
-
       %li
         .controls
           = rating.left_owing_money
+      %li
+        .controls
+          = rating.property.name, rating.property.city, rating.property.state, rating.property.zip
 
-
-
-
-.add-entry-address
-  .clearfix
-    %label Apartment Name / Street Address
-    .input
-      = rating.property.name
-  .clearfix
-    %label Location
-    .input
-      = [rating.property.city, rating.property.state, rating.property.zip].join(', ')
-      %br

@@ -5,6 +5,10 @@
     = ff.text_field :first_name, { :class => 'entry-first-name', :placeholder => "First Name"}
     = ff.text_field :last_name, { :class => 'entry-last-name', :placeholder => "Last name"}
 
+    .address
+      = f.text_field :name, { :class => 'name-field', :placeholder => "Apartment name or address"}
+      = f.text_field :zip, { :class => 'zip-field', :placeholder => "Zipcode", :onkeyup => "var zip = $(this).val(); if (zip.length == 5) { $('#city-name').load('/reviews/zip_to_city?zip=' + zip); } else { $('#city-name').text('unknown ZIP') }"}
+
     .questions
       %ul{:style => "padding-top:5px"}
         - ["Were they late paying the rent?", "Did they recieve any noise complaints?", "Did they cause damange to the property?", "Did they skip or were they evicted?", "Did they leave owing any money?"].each do |question|
@@ -35,24 +39,8 @@
 
 
 
-.add-entry-address
-  - if f.object.new_record?
-    .clearfix
-      %label{:for => "name"} Apartment Name / Street Address
-      .input
-        = f.text_field :name, { :size => 30 }
-    .clearfix
-      %label{:for => "code"} ZIP Code of property
-      .input
-        = f.text_field :zip, { :size => "30", :onkeyup => "var zip = $(this).val(); if (zip.length == 5) { $('#city-name').load('/reviews/zip_to_city?zip=' + zip); } else { $('#city-name').text('unknown ZIP') }" }
-        %br
-        #city-name{:style => "height: 25px; padding:5px; float:right;"}
-    = check_box_tag :accepted_terms, true, true
-    I agree with the <a href="/terms">terms and conditons</a> and understand that all data I entered is my opinion
-  - else
-    .clearfix
-      %dl
-        %dt Apartment Name / Street Address
-        %dd= f.object.name
-        %dt ZIP Code of property
-        %dd= f.object.zip
+
+  #city-name{:style => "height: 25px; padding:5px; float:right;"}
+= check_box_tag :accepted_terms, true, true
+I agree with the <a href="/terms">terms and conditons</a> and understand that all data I entered is my opinion
+  
