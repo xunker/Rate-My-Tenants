@@ -243,7 +243,7 @@ footer {
 		font-family: 'Cardo', georgia, cambria, serif;
 	}
 	.add-entry select {
-		width: 60px;
+		width: 150px;
 		margin-bottom: 3px;
 	}
 		.add-entry-address {
